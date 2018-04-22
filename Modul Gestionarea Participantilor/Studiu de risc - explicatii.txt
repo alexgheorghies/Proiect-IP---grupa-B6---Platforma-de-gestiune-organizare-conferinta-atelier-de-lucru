@@ -1,0 +1,19 @@
+Studiul de risc consta in anticiparea factorilor care au impiedicat ca 
+proiectul sa fie realizat cu succes. Pentru aceasta, exista o scara de masura
+(scara lui Likert) in care fiecare componenta este evaluata cu o nota (un nr 
+real) cuprins intre 1 si 5: 1 deloc riscant - 5 extrem de riscant.
+Componente:
+Project size - nr de oameni implicati in proiect comparativ cu dimensiunea 
+proiectului 
+Project complexity - nr de sisteme afectate de proiect + necesitataea unei 
+tehnologii sofisticate pt implementarea proiectului
+Techinical complexity - cantitatea de tehnologie care trebuie adusa in 
+organizatie
+Extent of changes - schimbarile care au intervenit in timpul proiectului
+Insufficient resources - sansa care proiectul sa nu fie finalizat din cauza 
+lipsei resurselor
+Lack of team expertise - probleme din cauza lipsei experientei echipei 
+Lack of user support - probleme cauzate de lipsa suportului utilizatorului
+Lack of user experience - probleme din cauza lipsei experientei userului
+Intensity of conflicts - slaba comunicarea si colaborare intre membrii 
+echipei
