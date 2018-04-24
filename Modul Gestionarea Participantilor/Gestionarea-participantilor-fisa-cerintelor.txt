@@ -1,0 +1,73 @@
+Fisa cerintelor
+-Gestionarea participantilor-
+
+Descriere: Acest modul se va axa pe modalitatea prin care utilizatorul doreste sa participe la o conferinta, fapt care il poate realiza prin completarea unui formular expus pe platforma web a conferinte la care vrea sa participe, putand astfel sa ia legatura cu organizatorii acestui eveniment, dar sa si incarce o lucrare proprie pe site.
+Domenii:  Se vor descrie scenariile de utilizare ale utilizatorului(participantului) de a adauga o lucrare in cadrul conferintei  prin completarea formularelor standard.
+
+Actionari si Interese:  
+•	Utilizator:  Navigheaza pe site.
+•	Baza de date:  Retine informatiile aferente fiecarui utilizator.
+
+Actori si obiective: 
+•	Utilizator: Sa poata introduce o noua conferinta si toate informatiile legate de aceasta.
+•	Baza de date:  Retine informatiile aferente fiecarui utilizator.
+
+
+Scenarii de Utilizare: 
+
+1.	Completarea formularului de register/login de catre utilizator
+Obiectiv/Context:  Aplicatia ii furnizeaza utilizatorului formularul standard ce trebuie completat pentru inregistrarea/logarea pe site.
+       Scenariu/Pasi:
+Pas 0: Accesarea formularului de inregistrare/logare pus la dispozitie pe site;
+Pas 1: Introducerea datelor (nume utlizator + parola ) necesare logarii/inregistrarii;
+Pas 2: Reintroducerea datelor in cazul in care logarea/inregistrarea a esuat;
+
+
+2.	Crearea unei lucrari oarecare
+Obiectiv/Context:  Aplicatia ii furnizeaza utilizatorului formularul standard ce trebuie completat pentru crearea unei lucrari.
+Scenariu/Pasi:
+Pas 0: Accesarea formularului de creare pentru o lucrare.
+Pas 1: Completarea formularului cu continutul lucrarii.
+Pas 2: Salvarea lucrarii respective.
+
+3.	Modificarea unei lucrari oarecare
+Obiectiv/Context:  Aplicatia ii furnizeaza utilizatorului functionalitatea de editare a unei lucrari oarecare.
+Scenariu/Pasi:
+Pas 0: Accesarea listei lucrarilor create de catre utilizator
+Pas 1: Alegerea unei lucrari oarecare.
+Pas 2: Editarea lucrarii alese.
+Pas 3: Salvarea modificarilor.
+
+4.	Crearea unui upload oarecare
+Obiectiv/Context:  Aplicatia ii furnizeaza utilizatorului formularul standard ce trebuie completat pentru upload-ul unei lucrari create.
+Scenariu/Pasi:
+Pas 0: Accesarea listei lucrarilor create de catre utilizator.
+Pas 1: Alegerea unei lucrari oarecare.
+Pas 2: Accesarea upload-ului.
+Pas 3: Completarea formularului de upload.
+Pas 4: Uploadarea lucrarii respective.
+
+5.	Modificarea unui upload oarecare
+Obiectiv/Context:  Aplicatia ii furnizeaza utilizatorului functionalitatea de editare a unui upload oarecare.
+Scenariu/Pasi:
+Pas 0: Accesarea listei de upload-uri ale utilizatorului
+Pas 1: Alegerea unui upload oarecare.
+Pas 2: Editarea upload-ului ales.
+Pas 3: Salvarea modificarilor.
+
+
+6.	Accesarea informatiilor unui upload oarecare
+Obiectiv/Context:   Aplicatia ii furnizeaza utilizatorului functionalitatea de aflare informatiilor unui upload oarecare.
+Scenariu/Pasi:
+Pas 0: Accesarea listei de upload-uri ale utilizatorului 
+Pas 1: Alegerea unui upload
+Pas 2: Accesarea informatiilor oferite
+
+7.	Contactarea administratorilor
+Obiectiv/Context:  Aplicatia ii furnizeaza utilizatorului functionalitatea de contactare a unui administrator.
+Scenariu/Pasi:
+Pas 0: Accesarea listei de upload-uri ale utilizatorului
+Pas 1: Alegerea unui upload oarecare.
+Pas 2: Editarea upload-ului ales.
+Pas 3: Salvarea modificarilor.
+
