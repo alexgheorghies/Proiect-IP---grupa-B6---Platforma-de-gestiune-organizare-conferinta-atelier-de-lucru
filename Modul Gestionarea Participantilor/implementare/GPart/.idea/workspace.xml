@@ -16,7 +16,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/components.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+              <caret line="3" column="34" lean-forward="true" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -25,45 +25,10 @@
       <file leaf-file-name="PresentationRequest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/PresentationRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRequest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/UserRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PresentationHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding>
-                <element signature="e#318#319#0" expanded="true" />
-                <element signature="e#356#357#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/UserHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="161">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#295#296#0" expanded="true" />
-                <element signature="e#335#336#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,27 +37,96 @@
       <file leaf-file-name="PresentationScriptService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/script/PresentationScriptService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state relative-caret-position="-17">
+              <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
               <folding>
-                <element signature="e#441#442#0" expanded="true" />
-                <element signature="e#497#498#0" expanded="true" />
-                <element signature="e#555#556#0" expanded="true" />
-                <element signature="e#617#618#0" expanded="true" />
+                <element signature="e#724#725#0" expanded="true" />
+                <element signature="e#905#906#0" expanded="true" />
+                <element signature="e#955#956#0" expanded="true" />
+                <element signature="e#1007#1008#0" expanded="true" />
+                <element signature="e#1063#1064#0" expanded="true" />
+                <element signature="e#1111#1112#0" expanded="true" />
+                <element signature="e#1165#1166#0" expanded="true" />
+                <element signature="e#1229#1230#0" expanded="true" />
+                <element signature="e#1291#1292#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserScriptService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/script/UserScriptService.java">
+      <file leaf-file-name="Presentation.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/Presentation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PresentationUpload.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/PresentationUpload.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
               <folding>
-                <element signature="e#420#421#0" expanded="true" />
-                <element signature="e#478#479#0" expanded="true" />
+                <element signature="e#199#200#0" expanded="true" />
+                <element signature="e#234#235#0" expanded="true" />
+                <element signature="e#296#297#0" expanded="true" />
+                <element signature="e#344#345#0" expanded="true" />
+                <element signature="e#418#419#0" expanded="true" />
+                <element signature="e#474#475#0" expanded="true" />
+                <element signature="e#518#519#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UploadInfo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/UploadInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Author.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/Author.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-485">
+              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PresentationHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-60">
+              <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+              <folding>
+                <element signature="e#636#637#0" expanded="true" />
+                <element signature="e#671#672#0" expanded="true" />
+                <element signature="e#737#738#0" expanded="true" />
+                <element signature="e#778#779#0" expanded="true" />
+                <element signature="e#840#841#0" expanded="true" />
+                <element signature="e#879#880#0" expanded="true" />
+                <element signature="e#957#958#0" expanded="true" />
+                <element signature="e#1004#1005#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserScriptService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/script/UserScriptService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -137,7 +171,17 @@
         <option value="$PROJECT_DIR$/src/main/java/GPartPack/script/UserScriptService.java" />
         <option value="$PROJECT_DIR$/src/main/java/GPartPack/script/PresentationScriptSevice.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/components.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/GPartPack/Presentation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GPartPack/internal/UploadInfo.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/GPartPack/internal/Uploader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GPartPack/PresentationUpload.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/Author.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/PresentationUpload.java" />
         <option value="$PROJECT_DIR$/src/main/java/GPartPack/script/PresentationScriptService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GPartPack/PresentationRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/UploadInfo.java" />
       </list>
     </option>
   </component>
@@ -177,10 +221,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -236,7 +277,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="GPartPack" type="462c0819:PsiDirectoryNode" />
               <item name="internal" type="462c0819:PsiDirectoryNode" />
-              <item name="UserHandler" type="1a9f42e2:ClassTreeNode" />
+              <item name="PresentationPack" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GPart" type="b2602c69:ProjectViewProjectNode" />
@@ -277,6 +318,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -416,6 +460,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -429,7 +474,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1500732" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23572475" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -445,34 +490,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -484,6 +501,73 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/components.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/PresentationRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/UserRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#544#545#0" expanded="false" />
+            <element signature="e#582#583#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/UserHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#295#296#0" expanded="false" />
+            <element signature="e#335#336#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/script/PresentationScriptService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/script/UserScriptService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#420#421#0" expanded="false" />
+            <element signature="e#478#479#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/components.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -513,8 +597,9 @@
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="e#318#319#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#544#545#0" expanded="false" />
+            <element signature="e#582#583#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -524,9 +609,9 @@
         <state relative-caret-position="136">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#295#296#0" expanded="false" />
+            <element signature="e#335#336#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -535,12 +620,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#497#498#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#617#618#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -549,8 +629,8 @@
         <state relative-caret-position="51">
           <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
           <folding>
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="false" />
+            <element signature="e#478#479#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -575,12 +655,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-          <folding>
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#497#498#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#617#618#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -597,12 +672,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="33" column="10" lean-forward="false" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
-          <folding>
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#497#498#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#617#618#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -629,83 +699,141 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="17" column="59" lean-forward="false" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/GPartPack/HelloWorldTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/PresentationRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/UserRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/UserHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="136">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#295#296#0" expanded="false" />
+            <element signature="e#335#336#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationHandler.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#318#319#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="427">
+          <caret line="69" column="17" lean-forward="false" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/components.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+          <caret line="3" column="34" lean-forward="true" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/script/PresentationScriptService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/Uploader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#497#498#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#617#618#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="272">
+          <caret line="37" column="51" lean-forward="true" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/UserRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/script/UserScriptService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="136">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/PresentationRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+          <folding>
+            <element signature="e#636#637#0" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#778#779#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#879#880#0" expanded="true" />
+            <element signature="e#957#958#0" expanded="true" />
+            <element signature="e#1004#1005#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/script/PresentationScriptService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+          <folding>
+            <element signature="e#724#725#0" expanded="true" />
+            <element signature="e#905#906#0" expanded="true" />
+            <element signature="e#955#956#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1063#1064#0" expanded="true" />
+            <element signature="e#1111#1112#0" expanded="true" />
+            <element signature="e#1165#1166#0" expanded="true" />
+            <element signature="e#1229#1230#0" expanded="true" />
+            <element signature="e#1291#1292#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/Author.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-485">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/PresentationUpload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding>
+            <element signature="e#199#200#0" expanded="true" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#344#345#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#474#475#0" expanded="true" />
+            <element signature="e#518#519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/UploadInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GPartPack/internal/PresentationPack/Presentation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

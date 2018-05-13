@@ -2,7 +2,10 @@
 package GPartPack.script;
 
 import GPartPack.PresentationRequest;
-import GPartPack.Uploader;
+import GPartPack.internal.PresentationPack.Author;
+import GPartPack.internal.PresentationPack.Presentation;
+import GPartPack.internal.PresentationPack.PresentationUpload;
+import GPartPack.internal.PresentationPack.UploadInfo;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.script.service.ScriptService;
 
@@ -12,8 +15,7 @@ import javax.inject.Singleton;
 @Component
 @Named("presrequest")
 @Singleton
-public class PresentationScriptService implements ScriptService
-{
+public class PresentationScriptService implements ScriptService {
 
 
 
@@ -24,10 +26,24 @@ public class PresentationScriptService implements ScriptService
         return this.presReq.sayHello() + " user";
     }
 
-    public String uploadWork(String user, String mail) throws Exception {
+    public String uploadWork(PresentationUpload presentationUpload) throws Exception {
 
-        Uploader uploader=new Uploader();
-        uploader.uploadPresentation();
-        return null;
+        return presentationUpload.toString();
+    }
+
+    public Author getAuthorInstance(){
+        return presReq.getAuthorInstance();
+    }
+
+    public Presentation getPresentationInstance(){
+        return presReq.getPresentationInstance();
+    }
+
+    public UploadInfo getUploadInfoInstance(){
+        return presReq.getUploadInfoInstance();
+    }
+
+    public PresentationUpload getPresentationUploadInstance(){
+        return presReq.getPresentationUploadInstance();
     }
 }
