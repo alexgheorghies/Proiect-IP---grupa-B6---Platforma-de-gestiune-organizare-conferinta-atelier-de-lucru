@@ -1,0 +1,58 @@
+
+{{velocity}}
+  $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
+$xwiki.ssfx.use('uicomponents/widgets/upload.css', true)
+
+{{html}}
+<style>
+#CAP2{
+display:none
+</style>
+<div id="CAP1">
+ <form method="post">
+                <input type="button" value="Create" onclick="ReplaceForm()">
+</form>
+    </div>
+<div id="CAP2">
+        <form method="post">
+            <div class="col">
+            <input type="text-mare" id="confName" required="required" name="confName" placeholder="Name of conference">
+<br>
+	     <input type="text-mare" id="afArea" required="required" name="nrOfPart" placeholder="Number of participants">
+<br>
+		<input type="text-mare" id="afArea" required="required" name="orgName" placeholder="Name of organisator">
+<br>
+		<input type="text-mare" id="afArea" required="required" name="locOfConf" placeholder="Location of the conference">
+<br>
+		<input type="text-mare" id="afArea" required="required" name="dateOfConf" placeholder="Date of conference">
+<br>
+		<input type="text-mare" id="afArea" required="required" name="nrOfPres" placeholder="Number of presentations">
+<br>
+ 		<input type="text-mare" id="afArea" required="required" name="listOfSpeak" placeholder="List of speakers">
+        </div>
+	<input type="button" value="Finish">
+	</form>
+	</div>
+<script type="text/javascript">
+    function ReplaceForm() {
+        document.getElementById("CAP1").style.display = "none";
+        document.getElementById("CAP2").style.display = "block";
+    }
+</script>
+{{/html}}
+
+#if("$!request.confName" != '')
+
+  #set($conferenceUpload=$services.presrequest.getConferenceUploadInstance())
+  #set($conference=$services.presrequest.getConferenceInstance())
+  #set($uploadInfo=$services.presrequest.getUploadInfoInstance())
+
+  $conference.setName($request.confName)
+$conference.setNrOfParticipants($request.nrOfPart)
+  $conference.setOrganisator($request.orgName)
+$conference.setLocation($request.locOfConf)
+$conference.setConferenceDate($request.dateOfConf)
+$conference.setNumberOfPresentations($request.nrOfPres)
+$conference.setListaSpeackeri($request.listOfSpeak)
+
+{{/velocity}}
