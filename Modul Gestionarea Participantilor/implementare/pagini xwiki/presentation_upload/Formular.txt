@@ -1,19 +1,31 @@
-{{velocity}}
-  $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
-  $xwiki.ssfx.use('uicomponents/widgets/upload.css', true)
 
+{{groovy}}
+  def dir = "UploadList."
+  def path = dir + "Upload"
+
+  def arraySpace = xwiki.getSpaces().findAll { it.size() > dir.size() && it.substring(0, dir.size()) == dir}
+  def idUpload = arraySpace.size()
+
+  if(idUpload != 0){
+    arraySpace.sort()
+    def firstSpace = arraySpace[idUpload - 1]
+
+    idUpload = firstSpace.substring(path.size(), firstSpace.size()).toInteger() + 1
+  }
+
+  docPath = "UploadList.Upload" + idUpload + ".Upload" + idUpload
+  println ""
+{{/groovy}}
+
+{{velocity}}
 
 {{html}}
+
   <form enctype="multipart/form-data" method="post">
 
     <div>
       Title<br></br>
       <input type="text" name="titlu" size="20" placeholder="Insert title" required="required"/>
-      <br></br><br></br>
-
-      Content<br></br>
-      <input type="file" name="filepath" id="uploadfile" action="${doc.getURL('upload')}" />
-      <input type="hidden" name="form_token" value="$!{services.csrf.getToken()}"/>
       <br></br><br></br>
 
       Description<br></br>
@@ -29,9 +41,10 @@
 
     <script type="text/javascript">
       //<![CDATA[
+
          function getInnerHtml(requested, requstId){
             return requested + "  " +
-                   "<input type='text' name='" + requested.toLowerCase() + requstId + "' size='20' placeholder='Insert " +                                      requested.toLowerCase() + "' required/></br>";
+                   "<input type='text' name='" + requested.toLowerCase() + requstId + "' size='20' placeholder='Insert " +                                      requested.toLowerCase() + "' required pattern='[^;%]*' title='Not allowed ; and %'/></br>";
          }
 
          function handlerAuthors(that){
@@ -66,53 +79,42 @@
 {{/html}}
 
 #if("$!request.titlu" != '')
+  #set($newDoc = $xwiki.getDocument("$docPath"))
+  #set($upload = $newDoc.newObject('XWiki.PresentationUploadClass'))
 
-  #set($presentationUpload=$services.presrequest.getPresentationUploadInstance())
-  #set($presentation=$services.presrequest.getPresentationInstance())
-  #set($uploadInfo=$services.presrequest.getUploadInfoInstance())
-
-  $presentation.setTitle($request.titlu)
-  ##$presentation.setContent($request.filepath)   ??? TODO
-  $uploadInfo.setDescription($request.description)
+  $upload.set("title", $request.titlu)
+  $upload.set("description", $request.description)
 
   #set($intString="$!request.nrauthors")
   #set($Integer = 0)
   #set($end = $Integer.parseInt($intString))
   #set($start=1)
+  #set($authorList = "")
 
   #foreach($index in [$start..$end])
-    #set($author=$services.presrequest.getAuthorInstance())
-
     #set($requestField = "$request.name" + $index)
-    $author.setLastName("#evaluate($requestField)")
+    #set($authorList = $authorList + "#evaluate($requestField)")
 
     #set($requestField = "$request.prenume" + $index)
-    $author.setFirstName("#evaluate($requestField)")
+    #set($authorList = $authorList + "%" + "#evaluate($requestField)")
 
     #set($requestField = "$request.asociation" + $index)
-    $author.setAssociation("#evaluate($requestField)")
+    #set($authorList = $authorList + "%" + "#evaluate($requestField)")
 
     #set($requestField = "$request.organization" + $index)
-    $author.setOrganization("#evaluate($requestField)")
+    #set($authorList = $authorList + "%" + "#evaluate($requestField)")
 
     #set($requestField = "$request.university" + $index)
-    $author.setUniversity("#evaluate($requestField)")
+    #set($authorList = $authorList + "%" + "#evaluate($requestField)")
 
     #set($requestField = "$request.faculty" + $index)
-    $author.setFaculty("#evaluate($requestField)")
+    #set($authorList = $authorList + "%" + "#evaluate($requestField)")
 
     #set($requestField = "$request.email" + $index)
-    $author.setEmail("#evaluate($requestField)")
-
-    $uploadInfo.addAuthor($author)
+    #set($authorList = $authorList + "%" + "#evaluate($requestField)" + ";")
   #end
 
-  $presentationUpload.setPresentation($presentation)
-  $presentationUpload.setUploadInfo($uploadInfo)
-
-  $services.presrequest.uploadWork($presentationUpload)
-
+  $upload.set("authors", $authorList)
+  $newDoc.save()
 #end
 {{/velocity}}
-
-

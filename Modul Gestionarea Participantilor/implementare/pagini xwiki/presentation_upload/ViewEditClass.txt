@@ -1,0 +1,134 @@
+
+{{groovy output = false}}
+  hasContent = (doc.display("authors").size() > 0);
+{{/groovy}}
+
+{{velocity}}
+
+#set($authorSep = ";")
+#set($fieldSep = "%")
+#set($fieldName = ["Name", "Prenume", "Asociation", "Organization", "University", "Faculty", "Email"])
+
+#if ($context.action == 'view')
+
+  #set($class = $doc.getObject('XWiki.PresentationUploadClass').xWikiClass)
+  #set($authorIndex = 0)
+
+  #foreach($prop in $class.properties)
+    #if($prop.getName() != "authors")
+      ; $prop.prettyName
+      : $doc.display($prop.getName())
+    #end
+  #end
+
+  #if($hasContent)
+
+    #set($authorList = $doc.display("authors"))
+    #foreach($author in $authorList.split($authorSep))
+      #set($authorIndex = $authorIndex + 1)
+      #set($rowContent = "; Author" + $authorIndex)
+      $rowContent
+      #set($fieldIndex = 0)
+      #foreach($field in $author.split($fieldSep))
+        ; $fieldName[$fieldIndex]
+        : $field
+        #set($fieldIndex = $fieldIndex + 1)
+      #end
+
+    #end
+
+  #end
+
+#elseif($context.action == 'edit')
+
+#set($authorList = $doc.getObject('XWiki.PresentationUploadClass').getProperty('authors').value)
+#set($title = $doc.getObject('XWiki.PresentationUploadClass').getProperty('title').value)
+#set($description = $doc.getObject('XWiki.PresentationUploadClass').getProperty('description').value)
+
+#if("$!description" == '')
+  #set($description = "")
+#end
+
+{{html}}
+
+  <form enctype="multipart/form-data" method="post">
+    <div>
+      Title<br></br>
+      <input type="text" name="titlu" size="20" value="$title" required="required"/>
+      <br></br><br></br>
+
+      Description<br></br>
+      <textarea name="description" id="txtArea" rows="5" cols="70">$description</textarea>
+      <br></br><br></br>
+
+      #set($authorIndex = 0)
+      #foreach($author in $authorList.split($authorSep))
+        #set($authorIndex = $authorIndex + 1)
+        #set($rowContent = "Author" + $authorIndex)
+        <b>$rowContent</b><br></br>
+
+        #set($fieldIndex = 0)
+        #foreach($field in $author.split($fieldSep))
+          <b>$fieldName[$fieldIndex]</b><br></br>
+          #set($idName = $fieldName[$fieldIndex] + $authorIndex)
+          <input type="text" name=$idName size="20" value=$field required pattern="[^;%]*" title="Not allowed ; and %"/></br>
+
+          #set($fieldIndex = $fieldIndex + 1)
+          <br></br>
+        #end
+
+        <br></br><br></br>
+      #end
+    </div>
+
+    <br></br>
+    <input type="submit" value="Edit" title="Submit info" />
+  </form>
+{{/html}}
+
+
+#elseif($context.action == 'preview')
+
+  #set($authorList = $doc.getObject('XWiki.PresentationUploadClass').getProperty('authors').value)
+  #set($authorSize = $authorList.split($authorSep).size())
+
+  #set($newUpload = $doc.getObject('XWiki.PresentationUploadClass'))
+  $newUpload.set("title", $request.titlu)
+  $newUpload.set("description", $request.description)
+
+  #set($intString="$!authorSize")
+  #set($Integer = 0)
+  #set($end = $Integer.parseInt($intString))
+  #set($start=1)
+  #set($newAuthorList = "")
+
+  #foreach($index in [$start..$end])
+    #set($requestField = "$request.Name" + $index)
+    #set($newAuthorList = $newAuthorList + "#evaluate($requestField)")
+
+    #set($requestField = "$request.Prenume" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)")
+
+    #set($requestField = "$request.Asociation" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)")
+
+    #set($requestField = "$request.Organization" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)")
+
+    #set($requestField = "$request.University" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)")
+
+    #set($requestField = "$request.Faculty" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)")
+
+    #set($requestField = "$request.Email" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)" + ";")
+  #end
+
+
+  $newUpload.set("authors", $newAuthorList)
+  $doc.save()
+  $response.sendRedirect($doc.getURL('view'))
+#end
+
+{{/velocity}}
