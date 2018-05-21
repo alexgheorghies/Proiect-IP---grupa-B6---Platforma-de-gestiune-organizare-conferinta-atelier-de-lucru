@@ -1,0 +1,23 @@
+{{velocity}}
+
+#set($columns = ["title", "description", "doc.creationDate","doc.creator","_attachments"])
+#set($columnsProperties = {
+   "title" : { "type" : "text" , "size" : 20, "link" : "view"},
+   "description" : { "type" : "text", "link" : "view"}
+})
+#set($options = {
+  
+  "className":"XWiki.PresentationUploadClass",
+  "tagCloud" : true,
+  "rowCount": 10
+})
+
+#if(!$isAdmin)
+ $columns.add('_actions'))
+ $columnsProperties.put('_actions', { 'actions' : ['delete','edit','rights'] }))
+#end
+
+
+#livetable("userdirectory" $columns $columnsProperties $options)
+
+{{/velocity}}
