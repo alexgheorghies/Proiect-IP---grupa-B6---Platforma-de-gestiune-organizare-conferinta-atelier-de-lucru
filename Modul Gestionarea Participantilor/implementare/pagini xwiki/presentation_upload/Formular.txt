@@ -25,11 +25,11 @@
 
     <div>
       Title<br></br>
-      <input type="text" name="titlu" size="20" placeholder="Insert title" required="required"/>
+      <input type="text" name="titlu" maxlength="20" placeholder="Insert title" required="required"/>
       <br></br><br></br>
 
       Description<br></br>
-      <textarea name="description" id="txtArea" rows="5" cols="70" placeholder="Insert description"></textarea>
+      <textarea name="description" id="txtArea" maxlength="100" rows="5" cols="70" placeholder="Insert description"></textarea>
       <br></br><br></br>
 
       Number Of Authors<br></br>
@@ -44,7 +44,7 @@
 
          function getInnerHtml(requested, requstId){
             return requested + "  " +
-                   "<input type='text' name='" + requested.toLowerCase() + requstId + "' size='20' placeholder='Insert " +                                      requested.toLowerCase() + "' required pattern='[^;%]*' title='Not allowed ; and %'/></br>";
+                   "<input type='text' name='" + requested.toLowerCase() + requstId + "' maxlength='20' placeholder='Insert " +                                      requested.toLowerCase() + "' required pattern='[^;%]*' title='Not allowed ; and %'/></br>";
          }
 
          function handlerAuthors(that){
