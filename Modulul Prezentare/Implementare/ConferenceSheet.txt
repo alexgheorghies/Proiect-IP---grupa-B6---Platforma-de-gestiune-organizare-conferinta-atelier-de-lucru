@@ -1,0 +1,25 @@
+{{velocity}}
+## You can modify this page to customize the presentation of your object.
+## At first you should keep the default presentation and just save the document.
+
+#set($class = $doc.getObject('Conference.ConferenceClass').xWikiClass)
+#foreach($prop in $class.properties)
+  ; $prop.prettyName
+  : $doc.display($prop.getName())
+#end
+
+#set($title = $doc.getObject('Conference.ConferenceClass').getProperty('title').value)
+#set($color = $doc.getObject('Conference.ConferenceClass').getProperty('color').value)
+$title
+$color
+
+$xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
+
+    {{html}}
+        <script type="text/javascript">
+          
+      document.body.style.backgroundColor = "$color";
+    
+    </script>
+    {{/html}}
+{{/velocity}}

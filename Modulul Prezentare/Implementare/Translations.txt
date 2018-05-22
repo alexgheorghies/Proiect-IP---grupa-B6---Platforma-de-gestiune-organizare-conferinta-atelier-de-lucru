@@ -1,0 +1,3 @@
+conference.title=Title
+conference.doc.creationDate=Creation Date
+conference._actions=Actions
