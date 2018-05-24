@@ -2,24 +2,36 @@
 ## You can modify this page to customize the presentation of your object.
 ## At first you should keep the default presentation and just save the document.
 
+$xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
+
+#set ($discard = $xwiki.ssx.use('Conference.StyleSheet.WebHome'))
+#if ($context.action == 'edit')
 #set($class = $doc.getObject('Conference.ConferenceClass').xWikiClass)
+
 #foreach($prop in $class.properties)
   ; $prop.prettyName
   : $doc.display($prop.getName())
 #end
 
+
+#elseif($context.action == 'view')
 #set($title = $doc.getObject('Conference.ConferenceClass').getProperty('title').value)
 #set($color = $doc.getObject('Conference.ConferenceClass').getProperty('color').value)
+#set($headercolor = $doc.getObject('Conference.ConferenceClass').getProperty('headercolor').value)
+#set($titlecolor = $doc.getObject('Conference.ConferenceClass').getProperty('titlecolor').value)
 $title
 $color
-
-$xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
+$headercolor
 
     {{html}}
         <script type="text/javascript">
           
+     
       document.body.style.backgroundColor = "$color";
+      document.getElementById('xwikicontent').style.backgroundColor = "$headercolor";
+      document.getElementById('document-title').parentNode.style.backgroundColor = "$titlecolor";
     
     </script>
     {{/html}}
+#end
 {{/velocity}}
