@@ -1,0 +1,52 @@
+{{velocity}}
+
+{{html}}
+
+  <form enctype="multipart/form-data" method="post">
+
+    <div>
+      Title<br></br>
+      <input type="text" name="title" maxlength="20" placeholder="Insert title" required="required"/>
+      <br></br><br></br>
+
+      Description<br></br>
+      <textarea name="description" id="description" maxlength="100" rows="5" cols="70" placeholder="Insert description"></textarea>
+      <br></br><br></br>
+
+      Location<br></br>
+      <textarea name="location" id="description" maxlength="100" rows="5" cols="70" placeholder="Insert location details"></textarea>
+      <br></br><br></br>
+
+      Date of the conference<br></br>
+      <input type="text" name="date" placeholder="Insert date" required="required"/>
+      <br></br><br></br>
+
+      Seats available<br></br>
+      <input type="number" name="seats" min="0" max="5000" required="required"/>
+      <br></br><br></br>
+      <div id="speakers">
+          Speakers can be added after the conference is created by clicking edit.
+      </div>
+    </div>
+
+    <br></br>
+    <input type="submit" value="Add conference" title="Submit info" />
+{{/html}}
+
+#if("$!request.title" != '')
+  #set($docPath = "Conferences.${request.title}")
+  #if($xwiki.getUser().isUserInGroup('XWiki.XWikiAdminGroup')) || $xwiki.getUser().isUserInGroup('XWiki.Organizers')))
+
+    $conf.set("title", $request.title)
+    $conf.set("description", $request.description)
+    $conf.set("location", $request.location)
+    $conf.set("when", $request.date)
+    $conf.set("seatsAvailable", $request.seats)
+
+    $newDoc.save()
+    $response.sendRedirect($newDoc.getURL('view'))
+  #else
+    {{warning}}You are not able to create an conference please contact an admin!{{/warning}}
+  #end
+#end
+{{/velocity}}

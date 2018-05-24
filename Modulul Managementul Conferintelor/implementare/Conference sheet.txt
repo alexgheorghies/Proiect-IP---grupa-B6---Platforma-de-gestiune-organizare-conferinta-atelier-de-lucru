@@ -1,0 +1,35 @@
+{{velocity}}
+#if ($context.action == 'view')
+  #set($class = $doc.getObject('XWiki.ConferenceClass').xWikiClass)
+  #foreach($prop in $class.properties)
+    ; $prop.prettyName
+    : $doc.display($prop.getName())
+  #end
+  #set($speakers = $doc.getObject('XWiki.ConferenceClass').getProperty('speakers').value)
+  #foreach($v in $speakers.split(','))
+    #if($v == $xcontext.getUser()) 
+      {{html}}You are assigned as a speaker to this conference click here if you want to upload your resources.{{/html}}
+    #end
+  #end
+
+  #if($xwiki.getUser().isUserInGroup('XWiki.Reviewers'))
+     {{html}}You are assigned as a reviewer to this conference click here if you want to see resources for reviewing.{{/html}}
+  #end
+  #set ($author = $doc.author)
+  #if($author == $xcontext.getUser())
+    {{warning}}You are the organizer of this conferenge! You can create a presentation for this conference by clicking here!{{/warning}}
+  #end
+#elseif($context.action == 'edit')
+  #set ($author = $doc.author)
+  #if($author == $xcontext.getUser())
+    #set($class = $doc.getObject('XWiki.ConferenceClass').xWikiClass)
+    #foreach($prop in $class.properties)
+      ; $prop.prettyName
+      : $doc.display($prop.getName())
+    #end
+  #else
+    {{warning}}You are not the organizer of this conferenge! You can not edit this conference!{{/warning}}
+  #end
+#end
+
+{{/velocity}}

@@ -1,0 +1,20 @@
+1. Conference class:
+    (format : 
+	propertyNname : propertyType -> "prettyName" => optional settings
+	)
+	title : String -> "Conference Name"
+	description : TextArea -> "Description"
+	when : String -> "Date of the conference"
+	speakers : List of Users -> "Speakers attendint to conference" => Use suggest, Multiple select, Uses List
+	location : TextArea -> "Location"
+	seatsAvailable : Number -> "Seats available"
+	
+2. Add sheet from "Conference sheet.txt" (source)
+
+3. Add page under "XWiki" from "Create conference.txt" (source)
+
+4. Add groups: 
+		4.1. "Organizers" with right : Edit & Program
+		4.2  "Reviewers" with right : View
+
+		
