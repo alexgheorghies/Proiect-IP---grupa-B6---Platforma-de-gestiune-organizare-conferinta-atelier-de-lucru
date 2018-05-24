@@ -35,6 +35,8 @@
 
 #if("$!request.title" != '')
   #set($docPath = "Conferences.${request.title}")
+  #set($newDoc = $xwiki.getDocument("$docPath"))
+  #set($conf= $newDoc.newObject('XWiki.ConferenceClass'))
   #if($xwiki.getUser().isUserInGroup('XWiki.XWikiAdminGroup')) || $xwiki.getUser().isUserInGroup('XWiki.Organizers')))
 
     $conf.set("title", $request.title)
