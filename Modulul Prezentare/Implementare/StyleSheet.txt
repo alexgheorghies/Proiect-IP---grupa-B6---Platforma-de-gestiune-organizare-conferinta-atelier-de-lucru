@@ -1,0 +1,79 @@
+#xwikicontent {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.welcome_message, .main_body, h1, h2, h3, h4 {
+	padding: 0;
+	border: 0;
+	margin: 0;
+}
+
+
+#main_title {
+	font-size: 70px;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.title_box {
+  padding-top: 40px;
+  padding-bottom:25px;
+  border-radius: 140px;
+  background-color: #F5F1D5;
+  box-shadow: 1px 2px black;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+
+
+#main_subtitle, h2, h3, h4 {
+	font-size: 20px;
+    text-align: center;
+}
+
+.date {
+	font-size: 10px;
+}
+
+.main_body {
+	background-color: green;
+    padding: 30px;
+}
+
+.generic_title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #385D5E;
+    font-size: 2.7em;
+    text-align: center;
+}
+
+.flexcol {
+    display: flex;
+    flex-direction: column;
+}
+
+.flexrow {
+    display: flex;
+    flex-direction: row;
+}
+
+.table_item {
+    flex: 1;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    box-shadow: 5px 10px 20px -15px #33120F;
+    text-align: center;
+    margin-right: 60px;
+    font-size: 21px;
+}
+
+ul {
+  list-style: none;
+}

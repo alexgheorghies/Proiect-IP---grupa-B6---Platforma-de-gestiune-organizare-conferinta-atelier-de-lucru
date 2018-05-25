@@ -1,37 +1,99 @@
 {{velocity}}
-## You can modify this page to customize the presentation of your object.
-## At first you should keep the default presentation and just save the document.
-
-$xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
-
 #set ($discard = $xwiki.ssx.use('Conference.StyleSheet.WebHome'))
-#if ($context.action == 'edit')
+#if($context.action != 'view')
 #set($class = $doc.getObject('Conference.ConferenceClass').xWikiClass)
-
 #foreach($prop in $class.properties)
   ; $prop.prettyName
   : $doc.display($prop.getName())
 #end
-
-
 #elseif($context.action == 'view')
 #set($title = $doc.getObject('Conference.ConferenceClass').getProperty('title').value)
 #set($color = $doc.getObject('Conference.ConferenceClass').getProperty('color').value)
-#set($headercolor = $doc.getObject('Conference.ConferenceClass').getProperty('headercolor').value)
-#set($titlecolor = $doc.getObject('Conference.ConferenceClass').getProperty('titlecolor').value)
-$title
-$color
-$headercolor
+#if($color == 'red')
+#set($color = '#ED2939')
+#elseif($color == 'lilac')
+#set($color = '#D399E6')
+#elseif($color == 'purple')
+#set($color = '#85467B')
+#elseif($color == 'blue')
+#set($color = '#002395')
+#elseif($color == 'turquoise')
+#set($color = '#A0D6B4')
+#elseif($color == 'teal')
+#set($color = '#499CA0')
+#end
+#set($contentColor = $doc.getObject('Conference.ConferenceClass').getProperty('contentColor').value)
+#if($contentColor == 'red')
+#set($contentColor = '#ED2939')
+#elseif($contentColor == 'lilac')
+#set($contentColor = '#D399E6')
+#elseif($contentColor == 'purple')
+#set($contentColor = '#85467B')
+#elseif($contentColor == 'blue')
+#set($contentColor = '#002395')
+#elseif($contentColor == 'turquoise')
+#set($contentColor = '#A0D6B4')
+#elseif($contentColor == 'teal')
+#set($contentColor = '#499CA0')
+#end
+#set($titleFont = $doc.getObject('Conference.ConferenceClass').getProperty('titleFont').value)
+#set($textFont = $doc.getObject('Conference.ConferenceClass').getProperty('textFont').value)
+#set($subtitle= $doc.getObject('Conference.ConferenceClass').getProperty('subtitle').value)
+#set($edition = $doc.getObject('Conference.ConferenceClass').getProperty('edition').value)
+#set($location = $doc.getObject('Conference.ConferenceClass').getProperty('location').value)
+#set($date = $doc.getObject('Conference.ConferenceClass').getProperty('date').value)
+$xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
+{{html clean="false"}}
 
-    {{html}}
-        <script type="text/javascript">
-          
-     
-      document.body.style.backgroundColor = "$color";
-      document.getElementById('xwikicontent').style.backgroundColor = "$headercolor";
-      document.getElementById('document-title').parentNode.style.backgroundColor = "$titlecolor";
+<style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Great+Vibes|Indie+Flower|Kavivanar|Lato|Monoton|Montserrat|Oswald|Plaster|Raleway|Roboto');
+	.welcome_message {
+		background-color: $contentColor;
     
-    </script>
-    {{/html}}
+        font-family: $textFont;
+    }
+
+    #main_title {
+        font-family: $titleFont;
+    }
+
+</style>
+
+    <section class="welcome_message">
+        <h1 id="main_title">
+            <div class="title_box">Welcome to $title Conference!</div>
+        </h1>
+        <h2 class="generic_title">Details</h2>
+         <div class="flexcol">
+             <ul class="flexrow">
+                <li class="table_item">Despre ce este vorba?</li>
+                <li class="table_item">$subtitle</li>
+            </ul>
+            <ul class="flexrow">
+                <li class="table_item">Ce editie?</li>
+                <li class="table_item">Editia a $edition a</li>
+            </ul>
+            <ul class="flexrow">
+                <li class="table_item">Unde?</li>
+                <li class="table_item">$location</li>
+            </ul>
+            <ul class="flexrow">
+                <li class="table_item">Cand?</li>
+                <li class="table_item">$date</li>
+            </ul>
+        </div>
+
+    </section>
+		
+	
+    <div class='main_body'>
+		asdfasd
+	</div>
+
+<script type="text/javascript">
+	document.body.style.backgroundColor = "$color";
+
+</script>
+{{/html}}
 #end
 {{/velocity}}
