@@ -204,32 +204,41 @@
 {{/html}}
 
 
-#if("$!request.titlu" != '')
+#if("$!request.title_paper" != '')
   #set($newDoc = $xwiki.getDocument("$docPath"))
   #set($upload = $newDoc.newObject('XWiki.PresentationUploadClass'))
 
-  $upload.set("title", $request.titlu)
-  $upload.set("description", $request.description)
+  $upload.set("title", $request.title_paper)
+  $upload.set("description", $request.comments)
+
+  $upload.set("novel", $request.scientificNovelty)
+  $upload.set("appnovel", $request.applicativeNovelty)
+  $upload.set("lang", $request.Language)
+  $upload.set("clarity", $request.Clarity)
+  $upload.set("org", $request.Organization)
+  $upload.set("audience", $request.Audience_of_the_paper)
+  $upload.set("refs", $request.References)
+  $upload.set("sim", $request.similiar_works)
+  $upload.set("manu", $request.Manuscript)
+  $upload.set("form", $request.formulas)
+  $upload.set("figures", $request.figures)
+  $upload.set("rel", $request.relevancy)
+  $upload.set("finals", $request.finalOp)
+
 
   #set($intString="$!request.nrauthors")
 
-  #set($snovelty="$!request.scientificNovelty")
-  #set($anovelty="$!request.applicativeNovelty")
-  #set($language="$!request.Language")
-  #set($clarity="$!request.Clarity")
-  #set($organization="$!request.Organization")
-  #set($audience="$!request.Audience_of_the_paper")
-  #set($references="$!request.References")
-  #set($works="$!request.similiar_works")
-  #set($manuscript="$!request.Manuscript")
-  #set($formulas="$!request.formulas")
-  #set($figures="$!request.figures")
-  #set($relevancy="$!request.relevancy")
-  #set($finalOP="$!request.finalOp")
+  #set($papers="$!request.paper")
+  #set($reviewers="$!request.reviewer")
+
+
 
 
   #set($Integer = 0)
   #set($end = $Integer.parseInt($intString))
+
+  #set($paperNo = $Integer.parseInt($papers))
+  #set($reviewerNo = $Integer.parseInt($reviewers))
   #set($start=1)
   #set($authorList = "")
 
@@ -242,7 +251,6 @@
 
   #end
 
-  $upload.set("authors", $authorList)
   $upload.set("authors", $authorList)
   $newDoc.save()
 #end
