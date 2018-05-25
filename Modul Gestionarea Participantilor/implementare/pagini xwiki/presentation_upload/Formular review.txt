@@ -1,0 +1,157 @@
+
+{{html}}
+
+ <form enctype="multipart/form-data" method="post">
+
+    <div>
+      Paper #:
+      <input type="number" name="paper" min="1" placeholder="Insert paper title required="required"/>
+      <br></br><br></br>
+
+      Reviewer #:
+
+     <input type="number" name="reviewer" min="1" placeholder="Insert reviewer name required="required"/>
+      <br></br><br></br>
+
+      Paper sent on:
+      <input type="text" name="paper_sent" required="required"/>
+      <br></br><br></br>
+
+      <b>Reviewer name:</b>
+      <input type="text" name="reviewer_name" required="required"/>
+      <br></br><br></br>
+
+      Review received on:
+      <input type="text" name="received_on" required="required"/>
+      <br></br><br></br><hr>
+
+      Title of the paper:
+      <input type="text" name="title_paper" required="required"/>
+      <br>
+
+       Number Of Authors<br></br>
+      <input type="number" name="nrauthors" step="1" min="1" max = "20" oninput="handlerAuthors(this)"
+      required/>
+      <br></br><br></br>
+
+      Scientific Novelty<br></br>
+      <input type="radio" name="scientificNovelty" value="5"> Excellent
+      <input type="radio" name="scientificNovelty" value="4"> Very High
+      <input type="radio" name="scientificNovelty" value="3"> High
+      <input type="radio" name="scientificNovelty" value="2"> Good
+      <input type="radio" name="scientificNovelty" value="1"> Low/no novelty
+	<br></br>
+
+       Applicative novelty<br></br>
+      <input type="radio" name="applicativeNovelty" value="5"> Excellent
+      <input type="radio" name="applicativeNovelty" value="4"> Very High
+      <input type="radio" name="applicativeNovelty" value="3"> High
+      <input type="radio" name="applicativeNovelty" value="2"> Good
+      <input type="radio" name="applicativeNovelty" value="1"> Low/no novelty
+	<br></br>
+
+      Language<br></br>
+      <input type="radio" name="Language" value="4"> Correct
+      <input type="radio" name="Language" value="3"> A few corrections
+      <input type="radio" name="Language" value="2"> Poor
+      <input type="radio" name="Language" value="1"> Incomprehensible
+<br></br>
+
+	  Clarity<br></br>
+      <input type="radio" name="Clarity" value="5"> Excellent
+      <input type="radio" name="Clarity" value="4"> Good
+      <input type="radio" name="Clarity" value="3"> Fair
+      <input type="radio" name="Clarity" value="2"> Poor
+      <input type="radio" name="Clarity" value="1"> Unreadable
+<br></br>
+
+	  Organization<br></br>
+      <input type="radio" name="Organization" value="5"> Excellent
+      <input type="radio" name="Organization" value="4"> Good
+      <input type="radio" name="Organization" value="3"> Fair
+      <input type="radio" name="Organization" value="2"> Poor
+      <input type="radio" name="Organization" value="1"> Chaotic
+<br><br>
+
+	  Audience of the paper<br></br>
+      <input type="radio" name="Audience_of_the_paper" value="6"> Most specialists in the field<br />
+      <input type="radio" name="Audience_of_the_paper" value="5"> only a few specialists of high level<br />
+      <input type="radio" name="Audience_of_the_paper" value="4"> a reasonable proportion of the audience of this conference<br />
+      <input type="radio" name="Audience_of_the_paper" value="3"> possibly some scientists in the field<br />
+      <input type="radio" name="Audience_of_the_paper" value="2"> maybe some doctoral students<br />
+      <input type="radio" name="Audience_of_the_paper" value="1"> No interest<br />
+<br></br>
+
+
+	  References<br></br>
+	  Essential references:<br>
+      <input type="radio" name="References" value="4"> Ok
+      <input type="radio" name="References" value="3"> some are missing
+      <input type="radio" name="References" value="2"> completely missing
+      <input type="radio" name="References" value="1"> Not the case
+<br></br>
+
+	  Recent similiar works:<br>
+      <input type="radio" name="References" value="3"> Ok
+      <input type="radio" name="References" value="2"> missing
+      <input type="radio" name="References" value="1"> Not the case
+<br></br>
+
+	  <b>Manuscript typing:</b><br>
+	  Is it according to the Instructions for Authors?
+	  <input type="radio" name="Manuscript" value="2"> yes
+      <input type="radio" name="Manuscript" value="1"> No
+<br></br>
+
+      Are the formulas readable?
+      <input type="radio" name="formulas" value="2"> yes
+      <input type="radio" name="formulas" value="1"> No
+      <br><br><br>
+
+      <b>Figures and tables: </b><br><br>
+      Are correctly and clearly drawn?
+      <input type="radio" name="figures" value="2"> yes
+      <input type="radio" name="figures" value="1"> No
+<br></br>
+
+      Are relevant?
+      <input type="radio" name="relevancy" value="2"> yes
+      <input type="radio" name="relevancy" value="1"> No
+      <br><br><br>
+
+
+      <b>Final opinion</b><br>
+      <input type="radio" name="finalOp" value="7"> publish, an excellent paper;
+      <br><br>
+      <input type="radio" name="finalOp" value="6"> public, a good paper;
+      <br><br>
+      <input type="radio" name="finalOp" value="5"> publish after minor revision and improvements
+      <br><br>
+      <input type="radio" name="finalOp" value="4"> can be published only if major revisions and improvements (comments included) are made; send the paper to the authors, with comments;
+      <br><br>
+      <input type="radio" name="finalOp" value="3"> modest paper: recommend for possible publication in another conference proceedings;
+      <br><br>
+	 <input type="radio" name="finalOp" value="2">magazine-type paper: recommend for publication in another conference Proceedings;
+	 <br><br>
+	 <input type="radio" name="finalOp" value="1">poor paper, reject.
+
+	<br><br><br>
+
+	<b>Referee's comments </b> ( it is important that you indicate what revisions, if any, the author(s) should make.). If needed, use additional pages.
+	<br>
+	 <textarea name="comments" id="txtArea" maxlength="100" rows="5" cols="70" placeholder="Insert description"></textarea>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+{{/html}}
