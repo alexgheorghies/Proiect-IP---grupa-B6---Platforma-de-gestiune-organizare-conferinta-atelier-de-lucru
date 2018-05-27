@@ -59,8 +59,8 @@ $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
 
 <style type="text/css">
     @import url('https://fonts.googleapis.com/css?family=Great+Vibes|Indie+Flower|Kavivanar|Lato|Monoton|Montserrat|Oswald|Plaster|Raleway|Roboto');
-	.welcome_message {
-		background-color: $contentColor;
+ .welcome_message {
+  background-color: $contentColor;
     
         font-family: $textFont;
     }
@@ -164,12 +164,50 @@ $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
 </style>
 
 
-    <section class="welcome_message">
+    <!--<section class="welcome_message">
         <h1 id="main_title">
             <div class="title_box">Welcome to $title Conference!</div>
             
         </h1>
-    </section>
+    </section>-->
+<div class="slideshow_Container welcome_message">
+            
+            <img class="slide first" src="https://images.unsplash.com/photo-1509890078470-aa80385aee41?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ff67e8117e302b0884b183c5bbb07561&auto=format&fit=crop&w=1953&q=80">
+              <!--  <img src="../images/Slider1.jpeg" style="width:100%">-->
+            
+
+            <img class="slide" src="https://images.unsplash.com/photo-1508862842963-67ae79d4eded?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=956a3c2360de2bd2855383daef03e8d4&auto=format&fit=crop&w=634&q=80">
+              <!--  <img src="../images/Slider2.jpeg" style="width:100%">-->
+            
+
+            <img class="slide" src="https://images.unsplash.com/photo-1509408895711-7eda6e83c637?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1844cab997dc2e5f1ce14e3b9cbd0bc1&auto=format&fit=crop&w=1050&q=80">
+              <!--  <img src="../images/Slider3.jpeg" style="width:100%">-->
+            
+
+            <img class="slide" src="https://images.unsplash.com/photo-1491900177661-4e1cd2d7cce2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0e5f7a670b5cd3ff8bbc7b21ef4e4461&auto=format&fit=crop&w=1050&q=80">
+              <!--  <img src="../images/Slider4.jpeg" style="width:100%">-->
+            
+
+            <img class="slide" style="background-image:url(https://images.unsplash.com/photo-1507010228826-fd02d8c83ddf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=60c658450948b1b568b15cb0f4bacb32&auto=format&fit=crop&w=1041&q=80">
+              <!--  <img src="../images/Slider5.jpg" style="width:100%"> -->
+            
+
+
+
+            <!--<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>-->
+
+            <div class="dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+            </div>
+            <div class="cos_Logo">Welcome to $title Conference!</div>
+            
+
+      </div>
 
 <div class="row">
   <div class="column" onclick="openTab('b1');" style="background:rgba(0, 0, 0, 0.1);">
@@ -249,7 +287,87 @@ $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
     
 
 <script type="text/javascript">
-	  document.body.style.backgroundColor = "$color";
+      var slideIndex = 5
+var timeoutHandle;
+//showSlides(slideIndex);
+automateShowSlides();
+
+function plusSlides(n) {
+  slideIndex=slideIndex+n;
+  showSlides(slideIndex);
+}
+
+function currentSlide(n) {
+  slideIndex=n;
+  showSlides(slideIndex);
+}
+
+function showSlides(n) {
+
+  clearTimeout(timeoutHandle);
+  timeoutHandle=setTimeout(automateShowSlides,5000);
+  var first=document.getElementsByClassName("first");
+  if(first.length>0)
+  {
+    first[0].className="slide";
+  }
+  var slides = document.getElementsByClassName("slide");
+  var dots=document.getElementsByClassName("dot");
+
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+
+  var i;
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for(i=0;i< dots.length;i++)
+  {
+    dots[i].className="dot";
+  }
+
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className="dot active";
+
+}
+
+function automateShowSlides()
+{
+  var first=document.getElementsByClassName("first");
+  if(first.length>0)
+  {
+    first[0].className="slide";
+  }
+  var slides = document.getElementsByClassName("slide");
+  var dots=document.getElementsByClassName("dot");
+
+slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+
+
+
+  var i;
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for(i=0;i< dots.length;i++)
+  {
+    dots[i].className="dot";
+  }
+
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className="dot active";
+  timeoutHandle=setTimeout(automateShowSlides,5000);
+}
+
+   document.body.style.backgroundColor = "$color";
     document.body.style.backgroundImage = 'url($bodyimage)';
     document.getElementById('main_title').style.backgroundImage="url($titleImage)";
     document.getElementById('xwikicontent').style.backgroundColor="$contentColor";  
@@ -295,7 +413,7 @@ $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
 
 #if($context.action == 'view')
 <div>
-	
+ 
 {{gallery}}
       #foreach($attachment in $doc.attachmentList)
         #if($attachment.isImage())
@@ -309,14 +427,14 @@ $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
 {{pdfviewer file='$PDF'/}}
 
 <div class='footer'>
-		<u>Color change</u><br>
+  <u>Color change</u><br>
         <button class="buttonRed" type="button" onclick="colorChangeRed();"></button>
         <button class="buttonBlue" type="button" onclick="colorChangeBlue();"></button>
         <button class="buttonYellow" type="button" onclick="colorChangeYellow();"></button>
         <button class="buttonPurple" type="button" onclick="colorChangePurple();"></button>
         <button class="buttonBrown" type="button" onclick="colorChangeBrown();"></button>
         <button class="buttonAqua" type="button" onclick="colorChangeAqua();"></button>
-	</div>
+ </div>
 
 #end
 
