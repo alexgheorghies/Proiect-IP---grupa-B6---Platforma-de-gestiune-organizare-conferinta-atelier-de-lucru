@@ -1,7 +1,6 @@
 {{velocity}}
 $xwiki.get('jsfx').use('uicomponents/widgets/validation/livevalidation_prototype.js')
 $xwiki.get('ssfx').use('uicomponents/widgets/validation/livevalidation.css')
-$xwiki.get('jsfx').use('uicomponents/widgets/validation/livevalidation_prototype.js')
 
 #set ($discard = $xwiki.ssx.use('Conference.StyleSheet.WebHome'))
 #if($context.action != 'view')
