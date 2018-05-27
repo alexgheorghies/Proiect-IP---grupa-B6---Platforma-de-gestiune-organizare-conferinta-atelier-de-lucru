@@ -1,10 +1,15 @@
 {{velocity}}
+$xwiki.get('jsfx').use('uicomponents/widgets/validation/livevalidation_prototype.js')
+$xwiki.get('ssfx').use('uicomponents/widgets/validation/livevalidation.css')
+$xwiki.get('jsfx').use('uicomponents/widgets/validation/livevalidation_prototype.js')
+
 #set ($discard = $xwiki.ssx.use('Conference.StyleSheet.WebHome'))
 #if($context.action != 'view')
 #set($class = $doc.getObject('Conference.ConferenceClass').xWikiClass)
 #foreach($prop in $class.properties)
   ; $prop.prettyName
   : $doc.display($prop.getName())
+
 #end
 #elseif($context.action == 'view')
 #set($title = $doc.getObject('Conference.ConferenceClass').getProperty('title').value)
@@ -42,6 +47,14 @@
 #set($edition = $doc.getObject('Conference.ConferenceClass').getProperty('edition').value)
 #set($location = $doc.getObject('Conference.ConferenceClass').getProperty('location').value)
 #set($date = $doc.getObject('Conference.ConferenceClass').getProperty('date').value)
+#set($PDF = $doc.getObject('Conference.ConferenceClass').getProperty('PDF').value)
+#set($bodyimage = $doc.getObject('Conference.ConferenceClass').getProperty('bodyimage').value)
+#set($titleImage = $doc.getObject('Conference.ConferenceClass').getProperty('titleImage').value)
+#set($descriptionText = $doc.getObject('Conference.ConferenceClass').getProperty('descriptionText').value)
+#set($invites = $doc.getObject('Conference.ConferenceClass').getProperty('invites').value)
+#set($people = $doc.getObject('Conference.ConferenceClass').getProperty('people').value)
+#set($pages = $doc.getObject('Conference.ConferenceClass').getProperty('pages').value)
+#set($contact = $doc.getObject('Conference.ConferenceClass').getProperty('contact').value)
 $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
 {{html clean="false"}}
 
@@ -56,14 +69,134 @@ $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
     #main_title {
         font-family: $titleFont;
     }
+    
+    .gallery{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    
+   }
+
+   .footer{
+      background-color:#535f68;
+      color: white;
+      text-align: center;
+    }
+    
+    .column {
+      float: left;
+      width: 16.66%;
+      padding: 10px;
+      text-align: center;
+      font-size: 15px;
+      cursor: pointer;
+      color: white;
+    }
+
+   .containerTab {
+      padding: 20px;
+      color: white;
+   }
+
+   .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }  
+
+   .buttonRed{
+      width:20px;
+      height: 20px;
+      background-color:#c50a2e;
+      border: none;
+    }
+   
+    .buttonBlue{
+      width:20px;
+      height: 20px;
+      background-color:#24509c;
+      border: none;
+    }
+    
+    .buttonPurple{
+      width:20px;
+      height: 20px;
+      background-color:Purple;
+      border: none;
+    }
+
+    .buttonYellow{
+      width:20px;
+      height: 20px;
+      background-color:yellow;
+      border: none;
+    }
+
+    .buttonBrown{
+      width:20px;
+      height: 20px;
+      background-color:#cc6824;
+      border: none;
+    }
+
+    .buttonAqua{
+      width:20px;
+      height: 20px;
+      background-color:aqua;
+      border: none;
+    }
+
+
+  .closebtn {
+    float: right;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+  }
+  .presentation{
+    text-align: left;
+    text-indent: 30px;
+    font-family: $textFont;
+    word-wrap: break-word;
+    margin:30px;
+    }
 
 </style>
+
 
     <section class="welcome_message">
         <h1 id="main_title">
             <div class="title_box">Welcome to $title Conference!</div>
+            
         </h1>
-        <h2 class="generic_title">Details</h2>
+    </section>
+
+<div class="row">
+  <div class="column" onclick="openTab('b1');" style="background:rgba(0, 0, 0, 0.1);">
+    Details
+  </div>
+  <div class="column" onclick="openTab('b2');" style="background:rgba(0, 0, 0, 0.15);">
+    Description
+  </div>
+  <div class="column" onclick="openTab('b3');" style="background:rgba(0, 0, 0, 0.20);">
+    Invites
+  </div>
+  <div class="column" onclick="openTab('b4');" style="background:rgba(0, 0, 0, 0.25);">
+    People
+  </div>
+  <div class="column" onclick="openTab('b5');" style="background:rgba(0, 0, 0, 0.30);">
+   Pages
+  </div>
+  <div class="column" onclick="openTab('b6');" style="background:rgba(0, 0, 0, 0.35);">
+    Contact
+  </div>
+</div>
+
+<div id="b1" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.1)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Details</h2>
+  <p><div id="content">
          <div class="flexcol">
              <ul class="flexrow">
                 <li class="table_item">Despre ce este vorba?</li>
@@ -82,18 +215,114 @@ $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
                 <li class="table_item">$date</li>
             </ul>
         </div>
+        </div></p>
+</div>
 
-    </section>
-		
-	
-    <div class='main_body'>
-		asdfasd
-	</div>
+<div id="b2" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.15)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Description</h2>
+  <p class="presentation">$descriptionText</p>
+</div>
+
+<div id="b3" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.20)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Invites</h2>
+  <p class="presentation">$invites</p>
+</div>
+
+<div id="b4" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.25)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>People</h2>
+  <p class="presentation">$people</p>
+</div>
+
+<div id="b5" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.30)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Pages</h2>
+  <p class="presentation">$pages</p>
+</div>
+
+<div id="b6" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.35)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Contact</h2>
+  <p class="presentation">$contact</p>
+</div>
+    
 
 <script type="text/javascript">
-	document.body.style.backgroundColor = "$color";
+	  document.body.style.backgroundColor = "$color";
+    document.body.style.backgroundImage = 'url($bodyimage)';
+    document.getElementById('main_title').style.backgroundImage="url($titleImage)";
+    document.getElementById('xwikicontent').style.backgroundColor="$contentColor";  
+
+
+    function colorChangeRed(){
+     document.getElementById('xwikicontent').style.backgroundColor="#c50a2e";
+    }  
+    function colorChangeBlue(){
+     document.getElementById('xwikicontent').style.backgroundColor="#24509c";
+    }
+    function colorChangeYellow(){
+     document.getElementById('xwikicontent').style.backgroundColor="Yellow";
+    }
+    function colorChangePurple(){
+     document.getElementById('xwikicontent').style.backgroundColor="Purple";
+    }
+    function colorChangeBrown(){
+     document.getElementById('xwikicontent').style.backgroundColor="#cc6824";
+    }
+    function colorChangeAqua(){
+     document.getElementById('xwikicontent').style.backgroundColor="Aqua";
+    }
+
+    function openTab(tabName) {
+    var i, x;
+    x = document.getElementsByClassName("containerTab");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(tabName).style.display = "block";
+    }
 
 </script>
 {{/html}}
 #end
+{{/velocity}}
+
+{{velocity}}
+
+{{html wiki="true"}}
+
+
+#if($context.action == 'view')
+<div>
+	
+{{gallery}}
+      #foreach($attachment in $doc.attachmentList)
+        #if($attachment.isImage())
+         [[image:$doc@$attachment.filename]]
+        #end
+      #end
+{{/gallery}}
+
+</div>
+
+{{pdfviewer file='$PDF'/}}
+
+<div class='footer'>
+		<u>Color change</u><br>
+        <button class="buttonRed" type="button" onclick="colorChangeRed();"></button>
+        <button class="buttonBlue" type="button" onclick="colorChangeBlue();"></button>
+        <button class="buttonYellow" type="button" onclick="colorChangeYellow();"></button>
+        <button class="buttonPurple" type="button" onclick="colorChangePurple();"></button>
+        <button class="buttonBrown" type="button" onclick="colorChangeBrown();"></button>
+        <button class="buttonAqua" type="button" onclick="colorChangeAqua();"></button>
+	</div>
+
+#end
+
+
+
+{{/html}}
+
 {{/velocity}}
