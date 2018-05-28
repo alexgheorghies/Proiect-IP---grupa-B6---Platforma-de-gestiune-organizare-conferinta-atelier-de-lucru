@@ -112,6 +112,11 @@
 #if($context.action == 'edit')
 
 
+#if($doc.creator != $xcontext.getUser())
+  {{warning}} You are not the creator. You can't edit  {{/warning}}
+  #stop
+#end
+
 #set($authorList = $doc.getObject('XWiki.PresentationUploadClass').getProperty('authors').value)
 #set($title = $doc.getObject('XWiki.PresentationUploadClass').getProperty('title').value)
 #set($description = $doc.getObject('XWiki.PresentationUploadClass').getProperty('description').value)
@@ -274,6 +279,15 @@
   $newUpload.set("authors", $newAuthorList)
   $doc.save()
   $response.sendRedirect($doc.getURL('view'))
+
+
+#elseif($context.action == 'delete')
+
+#if($doc.creator != $xcontext.getUser())
+  {{warning}} You are not the creator. You can't edit  {{/warning}}
+  #stop
+#end
+
 #end
 
 {{/velocity}}
