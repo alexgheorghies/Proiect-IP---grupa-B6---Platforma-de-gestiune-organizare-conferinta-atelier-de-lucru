@@ -18,10 +18,16 @@
 {{/groovy}}
 
 {{velocity}}
+  #if("$!request.docName" == "")
+    {{warning}} Conference context missing {{/warning}}
+    #stop
+  #end
+
+  #set($path = "/xwiki/bin/view/Conferences/" + $request.docName)
 
 {{html}}
 
-  <form enctype="multipart/form-data" method="post">
+  <form "enctype="multipart/form-data" method="post">
 
     <div>
       Title<br></br>
@@ -84,6 +90,7 @@
 
   $upload.set("title", $request.titlu)
   $upload.set("description", $request.description)
+  $upload.set("conferencePath", $path)
 
   #set($intString="$!request.nrauthors")
   #set($Integer = 0)
