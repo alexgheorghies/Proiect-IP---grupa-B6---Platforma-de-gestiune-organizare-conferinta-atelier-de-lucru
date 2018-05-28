@@ -1,0 +1,110 @@
+{{groovy output="false"}}
+  def dir = "UploadList."
+  def subdir = "Upload"
+  def path = dir + subdir
+
+  arraySpace = xwiki.getSpaces().findAll { it.size() > dir.size() && it.substring(0, dir.size()) == dir}
+  for(index = 0; index < arraySpace.size(); index ++){
+    arraySpace[index] += "." + arraySpace[index].substring(dir.size(), arraySpace[index].size());
+  }
+
+{{/groovy}}
+
+{{velocity}}
+
+{{html}}
+
+<form enctype="multipart/form-data" method="post">
+
+Paper Title<br></br>
+      <input type="text" name="PaperTitle" maxlength="45" placeholder="Insert paper title" required="required"/>
+<br></br><br></br>
+
+
+First Reviewer<br></br>
+      <input type="text" name="FirstReviewer" maxlength="45" placeholder="Insert first reviewer name" required="required"/>
+<br></br><br></br>
+
+Second Reviewer<br></br>
+      <input type="text" name="SecondReviewer" maxlength="45" placeholder="Insert second reviewer name" required="required"/>
+<br></br><br></br>
+
+<br></br>
+<input type="submit" value="Submit" title="Submit info" />
+
+
+</form>
+
+#if("$!request.FirstReviewer" != '')       
+
+#set($paperExists=false)
+#set($firstReviewer=false)
+#set($secondReviewer=false)
+
+
+
+#foreach($docName in $arraySpace)
+         #set($document=$xwiki.getDocument("$docName") ) 
+         #set($up_title = $xwiki.getDocument("$docName").getObject('XWiki.PresentationUploadClass').getProperty('title').value)
+
+          #if($up_title == $!request.PaperTitle)
+                 
+                  #set($paperExists=true)   
+                  #set($presentationClass=$document.getObject('XWiki.PresentationUploadClass')) 
+                  #break
+         
+           #end
+       #end
+
+
+
+#if($paperExists==true)
+
+
+
+#set($groupdoc = $xwiki.getDocument("XWiki.XWikiReviewers"))
+#set($memberobj = $groupdoc.getObjects("XWiki.XWikiGroups"))
+
+
+    #foreach($mobj in $memberobj)
+
+       #set ($member = $groupdoc.display("member", "view", $mobj))
+    
+       #if($request.FirstReviewer.equals($xwiki.getUserName($member,false))) 
+           #set($firstReviewer=true)  
+       #end
+
+       
+       #if($request.SecondReviewer.equals($xwiki.getUserName($member,false))) 
+           #set($secondReviewer=true)  
+      #end
+        
+
+   #end
+
+
+{{/html}}
+
+
+#if($firstReviewer==false)
+    First user incorect
+#end
+
+#if($secondReviewer==false)
+    Second user incorect
+#end
+
+#if($firstReviewer==true)
+   
+    #if($secondReviewer==true)
+        
+        $presentationClass.set('Reviewer1',$request.FirstReviewer)
+        $presentationClass.set('Reviewer2',$request.SecondReviewer)
+        $document.save()
+
+       
+    #end
+#end
+#end
+#end
+{{/velocity}}
