@@ -1,5 +1,6 @@
 {{groovy output = "false"}}
   hasContent = (doc.display("authors").size() > 0);
+  urlEncoded = URLEncoder.encode(doc.getWeb() + "." + doc.getName(), "UTF-8")
 {{/groovy}}
 
 
@@ -88,9 +89,21 @@
 
 {{velocity}}
 
-$livetablePath
-
 #livetable("sad" $columns $columnsProperties $options)
+
+{{html}}
+
+  <form>
+    <input type="submit" value="Review" name="submit" title="Submit info" />
+  </form>
+
+{{/html}}
+
+#if("$!request.submit" != '')
+  #set($red = '/xwiki/bin/view/Add%20Review?docName=' + $urlEncoded)
+  $response.sendRedirect($red)
+  #stop
+#end
 
 #if($context.action == 'edit')
 
