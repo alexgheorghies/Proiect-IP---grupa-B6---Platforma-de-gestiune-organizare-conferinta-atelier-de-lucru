@@ -181,13 +181,16 @@
 
 #set($formComplete = 0)
 #set($splitArray = [])
+#set($objectPath = "")
 
 #if("$!request.paper_sent" != '')
   #set($formComplete = 1)
   #if("$!request.upload_name" != "")
   #set($splitArray = $request.upload_name.split('\.'))
+  #set($objectPath = $request.upload_name)
   #else
   #set($splitArray = $docPath.split('\.'))
+  #set($objectPath = $docPath)
   #end
 #end
 {{/velocity}}
@@ -219,16 +222,16 @@ if(formComplete){
 
 #if($formComplete == 1)
 
-  #set($newDoc = $xwiki.getDocument("$docPath"))
-  #set($rev1 = $newDoc.getObject('XWiki.PresentationUploadClass').getProperty('Reviewer1').value)
-  #set($rev2 = $newDoc.getObject('XWiki.PresentationUploadClass').getProperty('Reviewer2').value)
+  #set($rev1 = $xwiki.getDocument($objectPath).getObject('XWiki.PresentationUploadClass').getProperty('Reviewer1').value)
+  #set($rev2 = $xwiki.getDocument($objectPath).getObject('XWiki.PresentationUploadClass').getProperty('Reviewer2').value)
 
-  #if($currentUser != $rev1 && $currentUser != $rev2)
+  #if($currentUser.equals($rev1) == false && $currentUser.equals($rev2) == false)
      {{warning}} You are not a chosen reviewer {{/warning}}
 
      #stop
   #end
 
+  #set($newDoc = $xwiki.getDocument("$docPath"))
   #set($review = $newDoc.newObject('XWiki.UploadReviewClass'))
 
   $review.set("paperSentOn", $request.paper_sent)
