@@ -16,8 +16,8 @@
 
 <form enctype="multipart/form-data" method="post">
 
-Paper Title<br></br>
-      <input type="text" name="PaperTitle" maxlength="45" placeholder="Insert paper title" required="required"/>
+Upload Name<br></br>
+      <input type="text" name="UploadName" maxlength="45" placeholder="Insert upload name" required="required"/>
 <br></br><br></br>
 
 
@@ -35,6 +35,11 @@ Second Reviewer<br></br>
 
 </form>
 
+{{/html}}
+
+#if($hasAdmin)
+
+
 #if("$!request.FirstReviewer" != '')       
 
 #set($paperExists=false)
@@ -46,8 +51,13 @@ Second Reviewer<br></br>
 #foreach($docName in $arraySpace)
          #set($document=$xwiki.getDocument("$docName") ) 
          #set($up_title = $xwiki.getDocument("$docName").getObject('XWiki.PresentationUploadClass').getProperty('title').value)
+         #set($properDocName="UploadList.")
+         
+         #set($properDocName=$properDocName+$!request.UploadName) 
+         #set($properDocName=$properDocName+".")
+         #set($properDocName=$properDocName+$!request.UploadName)
 
-          #if($up_title == $!request.PaperTitle)
+         #if($docName == $properDocName)
                  
                   #set($paperExists=true)   
                   #set($presentationClass=$document.getObject('XWiki.PresentationUploadClass')) 
@@ -82,16 +92,12 @@ Second Reviewer<br></br>
 
    #end
 
-
-{{/html}}
-
-
 #if($firstReviewer==false)
-    First user incorect
+    {{warning}}First user incorect{{/warning}}
 #end
 
 #if($secondReviewer==false)
-    Second user incorect
+    {{warning}}Second user incorect{{/warning}}
 #end
 
 #if($firstReviewer==true)
@@ -104,7 +110,20 @@ Second Reviewer<br></br>
 
        
     #end
+
 #end
+
+#else
+
+{{warning}} Invalid paper name {{/warning}}
+
 #end
+
+
+#end
+
+#else 
+{{warning}}Only an admin can add reviwers{{/warning}}
+
 #end
 {{/velocity}}
