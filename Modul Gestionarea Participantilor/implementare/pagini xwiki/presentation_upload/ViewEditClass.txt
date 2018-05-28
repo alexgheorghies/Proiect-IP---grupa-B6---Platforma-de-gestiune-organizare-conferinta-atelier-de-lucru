@@ -1,0 +1,261 @@
+{{groovy output = "false"}}
+  hasContent = (doc.display("authors").size() > 0);
+{{/groovy}}
+
+
+{{velocity}}
+
+#set($authorSep = ";")
+#set($fieldSep = "%")
+#set($fieldName = ["Name", "Prenume", "Asociation", "Organization", "University", "Faculty", "Email"])
+
+#if ($context.action == 'view')
+
+  #set($class = $doc.getObject('XWiki.PresentationUploadClass').xWikiClass)
+  #set($authorIndex = 0)
+
+  {{html}}
+
+    <table style="width:100%; table-layout: fixed ;" border: 1px solid black>
+      #foreach($prop in $class.properties)
+        <tr>
+        #if($prop.getName() != "authors")
+          <th style="word-wrap: break-word; max-width: 150px; background-color: #F5F5F5;"> $prop.prettyName </th>
+          <td style="word-wrap: break-word; max-width: 150px;"> $doc.display($prop.getName()) </td>
+        #end
+        </tr>
+      #end
+    </table>
+
+  {{/html}}
+
+  #if($hasContent)
+
+    #set($authorList = $doc.display("authors"))
+    #foreach($author in $authorList.split($authorSep))
+      #set($authorIndex = $authorIndex + 1)
+      #set($rowContent = "Author" + $authorIndex)
+      #set($fieldIndex = 0)
+
+      {{html}}
+
+        <div style="width: 100%; background-color: #87CEFA; color: white; padding: 14px 20px; margin: 8px 0; border: none; border-radius: 4px; cursor: pointer;"><b> $rowContent </b></div>
+
+        <table style="width:100%; table-layout: fixed ;" border: 1px solid black>
+          #foreach($field in $author.split($fieldSep))
+            <tr>
+            <th style="word-wrap: break-word; max-width: 50%; background-color: #F5F5F5;"> $fieldName[$fieldIndex] </th>
+            <td style="word-wrap: break-word; max-width: 50%;"> $field </td>
+            </tr>
+
+            #set($fieldIndex = $fieldIndex + 1)
+          #end
+        </table>
+
+      {{/html}}
+
+    #end
+  #end
+
+#end
+
+{{/velocity}}
+
+{{velocity output = "false"}}
+
+
+#set($columns = ["reviewerName", "paperSentOn", "doc.creationDate","doc.creator","_attachments"])
+#set($columnsProperties = {
+   "reviewerName" : { "type" : "text" , "size" : 20, "link" : "view"},
+   "paperSentOn" : { "type" : "text", "link" : "view"}
+})
+
+#set($livetablePath = "UploadList." + "$doc.getName()" + ".Reviews")
+#set($options = {
+  "className":"XWiki.UploadReviewClass",
+  "extraParams": "&location=$livetablePath",
+  "tagCloud" : true,
+  "rowCount": 10
+})
+
+#if(!$isAdmin)
+ $columns.add('_actions'))
+ $columnsProperties.put('_actions', { 'actions' : ['delete','edit','rights'] }))
+
+#end
+{{/velocity}}
+
+
+{{velocity}}
+
+$livetablePath
+
+#livetable("sad" $columns $columnsProperties $options)
+
+#if($context.action == 'edit')
+
+#set($authorList = $doc.getObject('XWiki.PresentationUploadClass').getProperty('authors').value)
+#set($title = $doc.getObject('XWiki.PresentationUploadClass').getProperty('title').value)
+#set($description = $doc.getObject('XWiki.PresentationUploadClass').getProperty('description').value)
+#set($nrAuthor = $authorList.split($authorSep).size())
+
+#if("$!description" == '')
+  #set($description = "")
+#end
+
+{{html}}
+
+  <form enctype="multipart/form-data" method="post">
+    <div>
+      Title<br></br>
+      <input type="text" name="titlu" maxlength="20" value="$title" required="required"/>
+      <br></br><br></br>
+
+      Description<br></br>
+      <textarea name="description" maxlength="100" id="txtArea" rows="5" cols="70">$description</textarea>
+      <br></br><br></br>
+
+      Number Of Authors<br></br>
+      <input type="number" name="nrauthors" step="1" min="1" max = "20" value=$nrAuthor oninput="handlerAuthors(this, $nrAuthor)" required/>
+      <br></br><br></br>
+
+      #set($authorIndex = 0)
+      #foreach($author in $authorList.split($authorSep))
+        #set($authorIndex = $authorIndex + 1)
+        #set($rowContent = "Author" + $authorIndex)
+        #set($divId = "authorDiv" + $authorIndex)
+        <div id = $divId>
+        <b>$rowContent</b><br></br>
+
+        #set($fieldIndex = 0)
+        #foreach($field in $author.split($fieldSep))
+          <b>$fieldName[$fieldIndex]</b><br></br>
+          #set($idName = $fieldName[$fieldIndex] + $authorIndex)
+          <input type="text" name=$idName maxlength="20" value=$field required pattern="[^;%]*" title="Not allowed ; and %"/></br>
+
+          #set($fieldIndex = $fieldIndex + 1)
+          <br></br>
+        #end
+
+        </div>
+        <br></br><br></br>
+      #end
+
+      <div id = "otherAuthors"></div>
+    </div>
+
+    <script type="text/javascript">
+      //<![CDATA[
+
+         function getInnerHtml(requested, requstId){
+            return "<b>" + requested + "</b></br>  " +
+                   "<input type='text' name='" + requested + requstId + "' maxlength='20' placeholder='Insert " +                                      requested.toLowerCase() + "' required pattern='[^;%]*' title='Not allowed ; and %'/></br>";
+         }
+
+         function getNewDiv(indexAuthor){
+           var newdiv = document.createElement('div');
+           newdiv.setAttribute("id", "author" + indexAuthor);
+
+           newdiv.innerHTML =  "<b>Author " + indexAuthor + "</b></br>" +
+                                getInnerHtml("Name", indexAuthor) +
+                                getInnerHtml("Prenume", indexAuthor) +
+                                getInnerHtml("Asociation", indexAuthor) +
+                                getInnerHtml("Organization", indexAuthor) +
+                                getInnerHtml("University", indexAuthor) +
+                                getInnerHtml("Faculty", indexAuthor) +
+                                getInnerHtml("Email", indexAuthor) + "</br>";
+
+           document.getElementById('otherAuthors').appendChild(newdiv);
+         }
+
+         function setRequiredInput(divId, setValue){
+           var inputFields = document.getElementById(divId).children;
+           for(var indexField = 0; indexField < inputFields.length; indexField ++) {
+              inputFields[indexField].required = setValue;
+           }
+         }
+
+         function handlerAuthors(that, firstAuthors){
+           firstAuthors = parseInt(firstAuthors);
+           var extraAuthors = parseInt(that.value);
+
+           var indexAuthor;
+           document.getElementById('otherAuthors').innerHTML = "";
+
+           for(indexAuthor = 1; indexAuthor <= firstAuthors && indexAuthor <= extraAuthors; indexAuthor ++){
+             document.getElementById("authorDiv" + indexAuthor).style.display = "block";
+             setRequiredInput("authorDiv" + indexAuthor, true);
+           }
+
+           if(firstAuthors < extraAuthors){
+             for(indexAuthor = firstAuthors + 1; indexAuthor <= extraAuthors; indexAuthor ++){
+               getNewDiv(indexAuthor);
+             }
+           }
+
+           if(firstAuthors > extraAuthors){
+             for(indexAuthor = extraAuthors + 1; indexAuthor <= firstAuthors; indexAuthor ++){
+               document.getElementById("authorDiv" + indexAuthor).style.display = "none";
+               setRequiredInput("authorDiv" + indexAuthor, false);
+             }
+           }
+         }
+
+      //]]>
+    </script>
+
+    <br></br>
+    <input type="submit" value="Edit" title="Submit info" />
+  </form>
+{{/html}}
+
+
+#elseif($context.action == 'preview')
+
+  #if("$!request.titlu" == '')
+    $response.sendRedirect($doc.getURL('view'))
+    #stop
+  #end
+
+  #set($authorList = $doc.getObject('XWiki.PresentationUploadClass').getProperty('authors').value)
+  #set($newUpload = $doc.getObject('XWiki.PresentationUploadClass'))
+
+  $newUpload.set("title", $request.titlu)
+  $newUpload.set("description", $request.description)
+
+  #set($intString="$!request.nrauthors")
+  #set($Integer = 0)
+  #set($end = $Integer.parseInt($intString))
+  #set($start=1)
+  #set($newAuthorList = "")
+
+  #foreach($index in [$start..$end])
+    #set($requestField = "$request.Name" + $index)
+    #set($newAuthorList = $newAuthorList + "#evaluate($requestField)")
+
+    #set($requestField = "$request.Prenume" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)")
+
+    #set($requestField = "$request.Asociation" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)")
+
+    #set($requestField = "$request.Organization" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)")
+
+    #set($requestField = "$request.University" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)")
+
+    #set($requestField = "$request.Faculty" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)")
+
+    #set($requestField = "$request.Email" + $index)
+    #set($newAuthorList = $newAuthorList + "%" + "#evaluate($requestField)" + ";")
+  #end
+
+
+  $newUpload.set("authors", $newAuthorList)
+  $doc.save()
+  $response.sendRedirect($doc.getURL('view'))
+#end
+
+{{/velocity}}
