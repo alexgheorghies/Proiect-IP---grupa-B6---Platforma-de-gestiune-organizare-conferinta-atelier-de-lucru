@@ -21,6 +21,10 @@
 
 {{velocity}}
 
+#set($docPath = "")
+#if("$!request.docName" != '')
+  #set($docPath = $request.docName)
+#end
 ##$xcontext.getUser()
 
 {{html}}
@@ -30,6 +34,7 @@
 
     <div>
 
+        #if("$!docPath" == "")
        <b>Upload Name</b>
        <select name="upload_name" required>
        #foreach($docName in $arraySpace)
@@ -40,6 +45,7 @@
        #end
       </select>
       <br></br><br></br>
+      #end
 
       <b>Paper sent on</b>
       <input type="text" name="paper_sent" required="required"/>
@@ -175,7 +181,11 @@
 
 #if("$!request.paper_sent" != '')
   #set($formComplete = 1)
+  #if("$!request.upload_name" != "")
   #set($splitArray = $request.upload_name.split('\.'))
+  #else
+  #set($splitArray = $docPath.split('\.'))
+  #end
 #end
 {{/velocity}}
 
