@@ -1,0 +1,581 @@
+{{velocity}}
+$xwiki.get('jsfx').use('uicomponents/widgets/validation/livevalidation_prototype.js')
+$xwiki.get('ssfx').use('uicomponents/widgets/validation/livevalidation.css')
+#set($url=$doc.getURL())
+#set ($discard = $xwiki.ssx.use('Conference.StyleSheet.WebHome'))
+#if($context.action != 'view')
+#set($class = $doc.getObject('Conference.ConferenceClass').xWikiClass)
+#foreach($prop in $class.properties)
+  ; $prop.prettyName
+  : $doc.display($prop.getName())
+
+#end
+#elseif($context.action == 'view')
+#set($title = $doc.getObject('Conference.ConferenceClass').getProperty('title').value)
+#set($color = $doc.getObject('Conference.ConferenceClass').getProperty('color').value)
+#set($latitude = $doc.getObject('Conference.ConferenceClass').getProperty('latitude').value)
+#set($longitude = $doc.getObject('Conference.ConferenceClass').getProperty('longitude').value)
+#if($color == 'red')
+#set($color = '#ED2939')
+#elseif($color == 'lilac')
+#set($color = '#D399E6')
+#elseif($color == 'purple')
+#set($color = '#85467B')
+#elseif($color == 'blue')
+#set($color = '#002395')
+#elseif($color == 'turquoise')
+#set($color = '#A0D6B4')
+#elseif($color == 'teal')
+#set($color = '#499CA0')
+#end
+#set($contentColor = $doc.getObject('Conference.ConferenceClass').getProperty('contentColor').value)
+#if($contentColor == 'red')
+#set($contentColor = '#ED2939')
+#elseif($contentColor == 'lilac')
+#set($contentColor = '#D399E6')
+#elseif($contentColor == 'purple')
+#set($contentColor = '#85467B')
+#elseif($contentColor == 'blue')
+#set($contentColor = '#002395')
+#elseif($contentColor == 'turquoise')
+#set($contentColor = '#A0D6B4')
+#elseif($contentColor == 'teal')
+#set($contentColor = '#499CA0')
+#end
+#set($titleFont = $doc.getObject('Conference.ConferenceClass').getProperty('titleFont').value)
+#set($textFont = $doc.getObject('Conference.ConferenceClass').getProperty('textFont').value)
+#set($subtitle= $doc.getObject('Conference.ConferenceClass').getProperty('subtitle').value)
+#set($edition = $doc.getObject('Conference.ConferenceClass').getProperty('edition').value)
+#set($location = $doc.getObject('Conference.ConferenceClass').getProperty('location').value)
+#set($date = $doc.getObject('Conference.ConferenceClass').getProperty('date').value)
+#set($PDF = $doc.getObject('Conference.ConferenceClass').getProperty('PDF').value)
+#set($bodyimage = $doc.getObject('Conference.ConferenceClass').getProperty('bodyimage').value)
+#set($titleImage = $doc.getObject('Conference.ConferenceClass').getProperty('titleImage').value)
+#set($descriptionText = $doc.getObject('Conference.ConferenceClass').getProperty('descriptionText').value)
+#set($invites = $doc.getObject('Conference.ConferenceClass').getProperty('invites').value)
+#set($people = $doc.getObject('Conference.ConferenceClass').getProperty('people').value)
+#set($pages = $doc.getObject('Conference.ConferenceClass').getProperty('pages').value)
+#set($contact = $doc.getObject('Conference.ConferenceClass').getProperty('contact').value)
+$xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
+{{html clean="false"}}
+
+<style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Great+Vibes|Indie+Flower|Kavivanar|Lato|Monoton|Montserrat|Oswald|Plaster|Raleway|Roboto');
+ .welcome_message {
+  background-color: $contentColor;
+
+        font-family: $textFont;
+    }
+
+    #main_title {
+        font-family: $titleFont;
+    }
+
+    .gallery{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+
+   }
+
+   .footer{
+      background-color:#535f68;
+      color: white;
+      text-align: center;
+    }
+
+    .column {
+      float: left;
+      width: 16.66%;
+      padding: 10px;
+      text-align: center;
+      font-size: 15px;
+      cursor: pointer;
+      color: white;
+    }
+
+   .containerTab {
+      padding: 20px;
+      color: white;
+   }
+
+   .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+   .buttonRed{
+      width:20px;
+      height: 20px;
+      background-color:#c50a2e;
+      border: none;
+    }
+
+    .buttonBlue{
+      width:20px;
+      height: 20px;
+      background-color:#24509c;
+      border: none;
+    }
+
+    .buttonPurple{
+      width:20px;
+      height: 20px;
+      background-color:Purple;
+      border: none;
+    }
+
+    .buttonYellow{
+      width:20px;
+      height: 20px;
+      background-color:yellow;
+      border: none;
+    }
+
+    .buttonBrown{
+      width:20px;
+      height: 20px;
+      background-color:#cc6824;
+      border: none;
+    }
+
+    .buttonAqua{
+      width:20px;
+      height: 20px;
+      background-color:aqua;
+      border: none;
+    }
+
+
+  .closebtn {
+    float: right;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+  }
+  .presentation{
+    text-align: left;
+    text-indent: 30px;
+    font-family: $textFont;
+    word-wrap: break-word;
+    margin:30px;
+    }
+
+  #xwikicontent{
+    background-color: $contentColor;
+  }
+  .shareon{
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%
+  }
+   .like{
+    font-family:$textFont;
+  }
+
+</style>
+
+<!--<p id="afisat">$url</p>-->
+    <!--<section class="welcome_message">
+        <h1 id="main_title">
+            <div class="title_box">Welcome to $title Conference!</div>
+
+        </h1>
+    </section>-->
+<div class="slideshow_Container welcome_message">
+
+            <img id="img1" class="slide first" src="https://images.unsplash.com/photo-1509890078470-aa80385aee41?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ff67e8117e302b0884b183c5bbb07561&auto=format&fit=crop&w=1953&q=80">
+              <!--  <img src="../images/Slider1.jpeg" style="width:100%">-->
+
+
+            <img id="img2" class="slide" src="https://images.unsplash.com/photo-1508862842963-67ae79d4eded?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=956a3c2360de2bd2855383daef03e8d4&auto=format&fit=crop&w=634&q=80">
+              <!--  <img src="../images/Slider2.jpeg" style="width:100%">-->
+
+
+            <img id="img3" class="slide" src="https://images.unsplash.com/photo-1509408895711-7eda6e83c637?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1844cab997dc2e5f1ce14e3b9cbd0bc1&auto=format&fit=crop&w=1050&q=80">
+              <!--  <img src="../images/Slider3.jpeg" style="width:100%">-->
+
+
+            <img id="img4" class="slide" src="https://images.unsplash.com/photo-1491900177661-4e1cd2d7cce2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0e5f7a670b5cd3ff8bbc7b21ef4e4461&auto=format&fit=crop&w=1050&q=80">
+              <!--  <img src="../images/Slider4.jpeg" style="width:100%">-->
+
+
+            <img id="img5" class="slide" style="background-image:url(https://images.unsplash.com/photo-1507010228826-fd02d8c83ddf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=60c658450948b1b568b15cb0f4bacb32&auto=format&fit=crop&w=1041&q=80">
+              <!--  <img src="../images/Slider5.jpg" style="width:100%"> -->
+
+
+
+
+            <!--<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>-->
+
+            <div class="dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+            </div>
+            <div id="main_title" class="cos_Logo">Welcome to $title Conference!</div>
+
+
+      </div>
+
+<div class="row">
+  <div class="column" onclick="openTab('b1');" style="background:rgba(0, 0, 0, 0.1);">
+    Details
+  </div>
+  <div class="column" onclick="openTab('b2');" style="background:rgba(0, 0, 0, 0.15);">
+    Description
+  </div>
+  <div class="column" onclick="openTab('b3');" style="background:rgba(0, 0, 0, 0.20);">
+    Invites
+  </div>
+  <div class="column" onclick="openTab('b4');" style="background:rgba(0, 0, 0, 0.25);">
+    People
+  </div>
+  <div class="column" onclick="openTab('b5');" style="background:rgba(0, 0, 0, 0.30);">
+   Pages
+  </div>
+  <div class="column" onclick="openTab('b6');" style="background:rgba(0, 0, 0, 0.35);">
+    Contact
+  </div>
+</div>
+
+<div id="b1" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.1)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Details</h2>
+  <p><div id="content">
+         <div class="flexcol">
+             <ul class="flexrow">
+                <li class="table_item">Despre ce este vorba?</li>
+                <li class="table_item">$subtitle</li>
+            </ul>
+            <ul class="flexrow">
+                <li class="table_item">Ce editie?</li>
+                <li class="table_item">Editia a $edition a</li>
+            </ul>
+            <ul class="flexrow">
+                <li class="table_item">Unde?</li>
+                <li class="table_item">$location</li>
+            </ul>
+            <ul class="flexrow">
+                <li class="table_item">Cand?</li>
+                <li class="table_item">$date</li>
+            </ul>
+        </div>
+        </div></p>
+</div>
+
+<div id="b2" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.15)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Description</h2>
+  <p class="presentation">$descriptionText
+  <br>
+  <p class="presentation">Harta interactiva:</p>
+
+</p>
+
+   <div id="map" class="presentation" style="width:50%;height:300px"></div>
+
+  <!--<p>Harta interactiva:</p>
+  <div class="map_Container" id="map></div>-->
+</div>
+
+<div id="b3" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.20)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Invites</h2>
+  <p class="presentation">$invites</p>
+
+    <form enctype="multipart/form-data" method="post">
+
+    <div>
+      Number Of Guests<br>
+      <input type="number" name="guestsnr" step="1" min="1" max = "20" oninput="handlerGuests(this)" required/>
+      <br><br>
+
+      <div id = "guests"></div>
+    </div>
+
+    <script type="text/javascript">
+      //<![CDATA[
+
+         function getInnerHtml(requested, requstId){
+            return requested + "  " +
+                   "<input type='text' name='" + requested.toLowerCase() + requstId + "' maxlength='20' placeholder='Insert " +                                      requested.toLowerCase() + "' required pattern='[^;%]*' title='Not allowed ; and %'/></br>";
+         }
+
+         function handlerGuests(that){
+           document.getElementById('guests').innerHTML = "";
+
+           var indexGuests;
+           for(indexGuests = 1; indexGuests <= that.value; indexGuests ++){
+               var newdiv = document.createElement('div');
+               newdiv.setAttribute("id", "guest" + indexGuests);
+
+               newdiv.innerHTML =  "<b>Guest " + indexGuests + "<br>" +
+                                    getInnerHtml("Name", indexGuests ) +
+                                    getInnerHtml("Prenume", indexGuests ) +
+                                    getInnerHtml("Email", indexGuests ) + "<br>";
+
+              document.getElementById('guests').appendChild(newdiv);
+           }
+         }
+
+      //]]>
+    </script>
+    <br>
+    <input type="submit" value="Submit" title="Submit info" />
+  </form>
+
+</div>
+
+<div id="b4" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.25)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>People</h2>
+  <p class="presentation">$people</p>
+</div>
+
+<div id="b5" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.30)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Pages</h2>
+  <p class="presentation">$pages</p>
+</div>
+
+<div id="b6" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.35)">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Contact</h2>
+  <p class="presentation">$contact</p>
+</div>
+
+
+<script type="text/javascript">
+      var url=window.location.href;
+      var download_url=url.replace("view","download")+"/";
+      var url1=download_url+"background1.jpg";
+      var url2=download_url+"background2.jpg";
+      var url3=download_url+"background3.jpg";
+      var url4=download_url+"background4.jpg";
+      var url5=download_url+"background5.jpg";
+      var image1=document.getElementById("img1");
+      var image2=document.getElementById("img2");
+      var image3=document.getElementById("img3");
+      var image4=document.getElementById("img4");
+      var image5=document.getElementById("img5");
+      image1.src=url1;
+      image2.src=url2;
+      image3.src=url3;
+      image4.src=url4;
+      image5.src=url5;
+
+
+
+      var slideIndex = 5
+var timeoutHandle;
+//showSlides(slideIndex);
+automateShowSlides();
+
+function plusSlides(n) {
+  slideIndex=slideIndex+n;
+  showSlides(slideIndex);
+}
+
+function currentSlide(n) {
+  slideIndex=n;
+  showSlides(slideIndex);
+}
+
+function showSlides(n) {
+
+  clearTimeout(timeoutHandle);
+  timeoutHandle=setTimeout(automateShowSlides,5000);
+  var first=document.getElementsByClassName("first");
+  if(first.length>0)
+  {
+    first[0].className="slide";
+  }
+  var slides = document.getElementsByClassName("slide");
+  var dots=document.getElementsByClassName("dot");
+
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+
+  var i;
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for(i=0;i< dots.length;i++)
+  {
+    dots[i].className="dot";
+  }
+
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className="dot active";
+
+}
+
+function automateShowSlides()
+{
+  var first=document.getElementsByClassName("first");
+  if(first.length>0)
+  {
+    first[0].className="slide";
+  }
+  var slides = document.getElementsByClassName("slide");
+  var dots=document.getElementsByClassName("dot");
+
+slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+
+
+
+  var i;
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for(i=0;i< dots.length;i++)
+  {
+    dots[i].className="dot";
+  }
+
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className="dot active";
+  timeoutHandle=setTimeout(automateShowSlides,5000);
+}
+
+   document.body.style.backgroundColor = "$color";
+    document.body.style.backgroundImage = 'url($bodyimage)';
+    document.getElementById('main_title').style.backgroundImage="url($titleImage)";
+    document.getElementById('xwikicontent').style.backgroundColor="$contentColor";
+
+
+    function colorChangeRed(){
+     document.getElementById('xwikicontent').style.backgroundColor="#c50a2e";
+    }
+    function colorChangeBlue(){
+     document.getElementById('xwikicontent').style.backgroundColor="#24509c";
+    }
+    function colorChangeYellow(){
+     document.getElementById('xwikicontent').style.backgroundColor="Yellow";
+    }
+    function colorChangePurple(){
+     document.getElementById('xwikicontent').style.backgroundColor="Purple";
+    }
+    function colorChangeBrown(){
+     document.getElementById('xwikicontent').style.backgroundColor="#cc6824";
+    }
+    function colorChangeAqua(){
+     document.getElementById('xwikicontent').style.backgroundColor="Aqua";
+    }
+
+    function openTab(tabName) {
+    var i, x;
+    x = document.getElementsByClassName("containerTab");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(tabName).style.display = "block";
+    }
+
+</script>
+<script>
+function contactMap()
+{
+  var mapCenter=new google.maps.LatLng(Number("$latitude"),Number("$longitude"));
+  var options={
+    center:mapCenter,
+    zoom:18,
+  };
+  var map=new google.maps.Map(document.getElementById("map"),options);
+  var marker = new google.maps.Marker({position:mapCenter});
+  marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH7weUXxtqb9S6W-5IQsFsuN-LQxaaDDc&callback=contactMap"></script>
+{{/html}}
+#end
+{{/velocity}}
+
+{{velocity}}
+
+
+
+{{html wiki="true"}}
+
+
+#if($context.action == 'view')
+<div>
+
+{{gallery}}
+      #foreach($attachment in $doc.attachmentList)
+        #if($attachment.isImage())
+         [[image:$doc@$attachment.filename]]
+        #end
+      #end
+{{/gallery}}
+
+</div>
+
+{{pdfviewer file='$PDF'/}}
+
+<div class='footer'>
+  <u>Color change</u><br>
+        <button class="buttonRed" type="button" onclick="colorChangeRed();"></button>
+        <button class="buttonBlue" type="button" onclick="colorChangeBlue();"></button>
+        <button class="buttonYellow" type="button" onclick="colorChangeYellow();"></button>
+        <button class="buttonPurple" type="button" onclick="colorChangePurple();"></button>
+        <button class="buttonBrown" type="button" onclick="colorChangeBrown();"></button>
+        <button class="buttonAqua" type="button" onclick="colorChangeAqua();"></button>
+        <div class='shareon'>
+        {{shareon media='email,twitter,pinterest,print' twitterText='Check out' hashtags='awesome' pinterestMedia="$!{myImage}"           mailContent="I thought you might be interested in:"/}}
+
+        <div class='like'>
+
+        <label>Do you like what you just saw?</label>
+
+        {{likeButton/}}
+
+        </div>
+        </div>
+ </div>
+
+
+#end
+
+
+
+{{/html}}
+
+#if("$!request.guestsnr" != 0)
+#set($newDoc = $xwiki.getDocument("Invitati.Class"))
+  #set($upload = $newDoc.newObject('Conference.Invitati'))
+#set($intString="$!request.guestsnr")
+  #set($Integer = 0)
+  #set($end = $Integer.parseInt($intString))
+  #set($start=1)
+  #set($guestsList = "")
+
+  #foreach($index in [$start..$end])
+    #set($requestField = "$request.nume" + $index)
+    #set($guestsList = $guestsList + "#evaluate($requestField)")
+
+    #set($requestField = "$request.prenume" + $index)
+    #set($guestsList = $guestsList + "%" + "#evaluate($requestField)")
+
+    #set($requestField = "$request.email" + $index)
+    #set($guestsList = $guestsList + "%" + "#evaluate($requestField)" + ";")
+  #end
+
+  $upload.set("guests", $guestsList)
+  $newDoc.save()
+ #end
+{{/velocity}}
