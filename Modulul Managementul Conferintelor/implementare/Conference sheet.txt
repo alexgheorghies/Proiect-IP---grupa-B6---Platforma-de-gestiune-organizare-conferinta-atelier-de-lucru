@@ -8,7 +8,7 @@
   #set($speakers = $doc.getObject('XWiki.ConferenceManagementClass').getProperty('speakers').value)
   #foreach($v in $speakers.split(','))
     #if($v == $xcontext.getUser()) 
-      #set($title = $doc.getObject('XWiki.ConferenceClass').getProperty('title').value)
+      #set($title = $doc.getObject('XWiki.ConferenceManagementClass').getProperty('title').value)
       {{html}}You are assigned as a speaker to this conference click <a href="/xwiki/bin/view/Add%20New%20Upload?docName=$title/">here</a> if you want to upload your resources.{{/html}}
     #end
   #end
