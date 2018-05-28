@@ -25,7 +25,8 @@
 #if("$!request.docName" != '')
   #set($docPath = $request.docName)
 #end
-##$xcontext.getUser()
+
+#set($currentUser = $xcontext.getUser().split('\.')[1])
 
 {{html}}
 
@@ -38,8 +39,10 @@
        <b>Upload Name</b>
        <select name="upload_name" required>
        #foreach($docName in $arraySpace)
-          #set($up_title = $xwiki.getDocument("$docName").getObject('XWiki.PresentationUploadClass').getProperty('title').value)
-          #if($up_title == "OK")
+          #set($rev1 = $xwiki.getDocument("$docName").getObject('XWiki.PresentationUploadClass').getProperty('Reviewer1').value)
+          #set($rev2 = $xwiki.getDocument("$docName").getObject('XWiki.PresentationUploadClass').getProperty('Reviewer2').value)
+
+          #if($currentUser == $rev1 || $currentUser == $rev2)
             <option name="upload_name" value=$docName>$docName.split('\.')[1]</option>
           #end
        #end
@@ -189,7 +192,7 @@
 #end
 {{/velocity}}
 
-{{groovy}}
+{{groovy output = "false"}}
 
 if(formComplete){
   def dir = splitArray[0] + '.' + splitArray[1] + '.'
@@ -207,7 +210,6 @@ if(formComplete){
   }
 
   docPath = docPath + idReview + ".Review" + idReview
-  println docPath
 
 }
 
@@ -218,6 +220,15 @@ if(formComplete){
 #if($formComplete == 1)
 
   #set($newDoc = $xwiki.getDocument("$docPath"))
+  #set($rev1 = $newDoc.getObject('XWiki.PresentationUploadClass').getProperty('Reviewer1').value)
+  #set($rev2 = $newDoc.getObject('XWiki.PresentationUploadClass').getProperty('Reviewer2').value)
+
+  #if($currentUser != $rev1 && $currentUser != $rev2)
+     {{warning}} You are not a chosen reviewer {{/warning}}
+
+     #stop
+  #end
+
   #set($review = $newDoc.newObject('XWiki.UploadReviewClass'))
 
   $review.set("paperSentOn", $request.paper_sent)
