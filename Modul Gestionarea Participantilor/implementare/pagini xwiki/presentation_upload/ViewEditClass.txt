@@ -22,7 +22,11 @@
         <tr>
         #if($prop.getName() != "authors")
           <th style="word-wrap: break-word; max-width: 150px; background-color: #F5F5F5;"> $prop.prettyName </th>
-          <td style="word-wrap: break-word; max-width: 150px;"> $doc.display($prop.getName()) </td>
+          #if($prop.getName()!= "conferencePath")
+            <td style="word-wrap: break-word; max-width: 150px;"> $doc.display($prop.getName()) </td>
+          #else
+            <td style="word-wrap: break-word; max-width: 150px;"> <a href = $doc.display($prop.getName())>$doc.display($prop.getName())</a></td>
+          #end
         #end
         </tr>
       #end
