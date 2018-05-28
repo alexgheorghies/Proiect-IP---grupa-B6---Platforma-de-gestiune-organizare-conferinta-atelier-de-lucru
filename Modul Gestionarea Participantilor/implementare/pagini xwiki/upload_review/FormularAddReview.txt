@@ -1,0 +1,205 @@
+
+{{groovy output = "false"}}
+  def dir = "UploadList."
+  def subdir = "Upload"
+  def path = dir + subdir
+
+  arraySpace = xwiki.getSpaces().findAll { it.size() > dir.size() && it.substring(0, dir.size()) == dir}
+  def idUpload = arraySpace.size()
+
+  if(idUpload != 0){
+    arraySpace.sort()
+    def firstSpace = arraySpace[idUpload - 1]
+
+    idUpload = firstSpace.substring(path.size(), firstSpace.size()).toInteger() + 1
+  }
+
+  docPath = "UploadList.Upload" + idUpload + ".Upload" + idUpload
+
+  for(index = 0; index < arraySpace.size(); index ++){
+    arraySpace[index] += "." + arraySpace[index].substring(dir.size(), arraySpace[index].size());
+  }
+
+{{/groovy}}
+
+
+{{velocity}}
+
+{{html}}
+
+
+ <form enctype="multipart/form-data" method="post">
+
+    <div>
+
+       <b>Upload Name</b>
+       <select name="upload_name" required>
+       #foreach($docName in $arraySpace)
+          #set($up_title = $xwiki.getDocument("$docName").getObject('XWiki.PresentationUploadClass').getProperty('title').value)
+          #if($up_title == "OK")
+            <option name="upload_name" value=$docName>$docName.split('\.')[1]</option>
+          #end
+       #end
+      </select>
+      <br></br><br></br>
+
+      <b>Paper sent on</b>
+      <input type="text" name="paper_sent" required="required"/>
+      <br></br><br></br>
+
+      <b>Reviewer name</b>
+      <input type="text" name="reviewer_name" required="required"/>
+      <br></br><br></br>
+
+      <b>Review received on</b>
+      <input type="text" name="received_on" required="required"/>
+      <br></br><br></br>
+
+      <hr></hr>
+
+      <b>Scientific novelty</b><br></br>
+      <input type="radio" name="scientific_novelty" required value="Excellent">Excellent
+      <input type="radio" name="scientific_novelty" value="Very high">Very high
+      <input type="radio" name="scientific_novelty" value="High">High
+      <input type="radio" name="scientific_novelty" value="Good">Good
+      <input type="radio" name="scientific_novelty" value="No novelty">No novelty
+	  <br></br><br></br>
+
+      <b>Applicative novelty</b><br></br>
+      <input type="radio" name="applicative_novelty" required value="Excellent">Excellent
+      <input type="radio" name="applicative_novelty" value="Very high">Very high
+      <input type="radio" name="applicative_novelty" value="High">High
+      <input type="radio" name="applicative_novelty" value="Good">Good
+      <input type="radio" name="applicative_novelty" value="No novelty">No novelty
+	  <br></br><br></br>
+
+      <b>Language</b><br></br>
+      <input type="radio" name="language" required value="Correct">Correct
+      <input type="radio" name="language" value="A few corrections">A few corrections
+      <input type="radio" name="language" value="Poor">Poor
+      <input type="radio" name="language" value="Incomprehensible">Incomprehensible
+      <br></br><br></br>
+
+	  <b>Clarity</b><br></br>
+      <input type="radio" name="clarity" required value="Excellent">Excellent
+      <input type="radio" name="clarity" value="Good">Good
+      <input type="radio" name="clarity" value="Fair">Fair
+      <input type="radio" name="clarity" value="Poor">Poor
+      <input type="radio" name="clarity" value="Unreadable">Unreadable
+      <br></br><br></br>
+
+	  <b>Organization</b><br></br>
+      <input type="radio" name="organization" required value="Excellent">Excellent
+      <input type="radio" name="organization" value="Good">Good
+      <input type="radio" name="organization" value="Fair">Fair
+      <input type="radio" name="organization" value="Poor">Poor
+      <input type="radio" name="organization" value="Chaotic">Chaotic
+      <br></br><br></br>
+
+	  <b>Audience of the paper</b><br></br>
+      <input type="radio" name="audience_of_the_paper" required value="Most specialists in the field">Most specialists in the field<br />
+      <input type="radio" name="audience_of_the_paper" value="Only a few specialists of high level">Only a few specialists of high level<br />
+      <input type="radio" name="audience_of_the_paper" value="A reasonable proportion of the audience of this conference">A reasonable proportion of the audience of this conference<br />
+      <input type="radio" name="audience_of_the_paper" value="Possibly some scientists in the field">Possibly some scientists in the field<br />
+      <input type="radio" name="audience_of_the_paper" value="Maybe some doctoral students">Maybe some doctoral students<br />
+      <input type="radio" name="audience_of_the_paper" value="No interest">No interest<br />
+      <br></br><br></br>
+
+	  <hr></hr>
+
+	  <b>Essential references</b><br></br>
+      <input type="radio" name="references" required value="Ok">Ok
+      <input type="radio" name="references" value="Some are missing">Some are missing
+      <input type="radio" name="references" value="Completely missing">Completely missing
+      <input type="radio" name="references" value="Not the case">Not the case
+      <br></br><br></br>
+
+	  <b>Recent similar works</b><br></br>
+      <input type="radio" name="similar_works" required value="Ok">Ok
+      <input type="radio" name="similar_works" value="Missing">Missing
+      <input type="radio" name="similar_works" value="Not the case">Not the case
+      <br></br><br></br>
+
+	  <b><u>Manuscript typing</u></b><br></br>
+      <b>Is it according to the Instructions for Authors?</b><br>
+	  <input type="radio" name="manuscript" required value="Yes">Yes
+      <input type="radio" name="manuscript" value="No">No
+      <br></br><br></br>
+
+      <b>Are the formulas readable?</b><br></br>
+      <input type="radio" name="formulas" required value="Yes">Yes
+      <input type="radio" name="formulas" value="No">No
+      <br></br><br></br>
+
+      <b><u>Figures and tables</u></b><br></br>
+      <b>Are correctly and clearly drawn?</b><br></br>
+      <input type="radio" name="figures" required value="Yes">Yes
+      <input type="radio" name="figures" value="No">No
+      <br></br><br></br>
+
+      <b>Are relevant?</b><br></br>
+      <input type="radio" name="relevancy" required value="Yes">Yes
+      <input type="radio" name="relevancy" value="No">No
+      <br></br><br></br>
+
+      <hr></hr>
+
+      <b>Final opinion</b><br></br>
+      <input type="radio" name="final_op" required value="Publish, an excellent paper">Publish, an excellent paper
+      <br></br>
+      <input type="radio" name="final_op" value="Publish, a good paper">Publish, a good paper
+      <br></br>
+      <input type="radio" name="final_op" value="Publish after minor revision and improvements">Publish after minor revision and improvements
+      <br></br>
+      <input type="radio" name="final_op" value="Can be published only if major revisions and improvements (comments included) are made. Send the paper to the authors, with comments">Can be published only if major revisions and improvements (comments included) are made. Send the paper to the authors, with comments
+      <br></br>
+      <input type="radio" name="final_op" value="Modest paper: recommend for possible publication in another conference proceedings">Modest paper: recommend for possible publication in another conference proceedings
+      <br></br>
+	 <input type="radio" name="final_op" value="Magazine-type paper: recommend for publication in another conference Proceedings">Magazine-type paper: recommend for publication in another conference Proceedings
+     <br></br>
+	 <input type="radio" name="final_op" value="Poor paper, reject">Poor paper, reject
+
+	 <br></br><br></br>
+
+	<b>Referee's comments </b> ( it is important that you indicate what revisions, if any, the author(s) should make.). If needed, use additional pages.
+	<br>
+	 <textarea name="comments" id="txtArea" maxlength="100" rows="5" cols="150" placeholder="Insert description"></textarea>
+
+    </div>
+
+  <input type="submit" value="Submit" title="Submit info" />
+  </form>
+
+{{/html}}
+
+
+#if("$!request.paper_sent" != '')
+
+
+  #set($newDoc = $xwiki.getDocument("$docPath"))
+  #set($review = $newDoc.newObject('XWiki.UploadReviewClass'))
+
+  $review.set("paperSentOn", $request.paper_sent)
+  $review.set("reviewerName", $request.reviewer_name)
+  $review.set("receivedOn", $request.received_on)
+  $review.set("scientificNovelty", $request.scientific_novelty)
+  $review.set("applicativeNovelty", $request.applicative_novelty)
+  $review.set("language", $request.language)
+  $review.set("clarity", $request.clarity)
+  $review.set("organization", $request.organization)
+  $review.set("audienceOfThePaper", $request.audience_of_the_paper)
+  $review.set("references", $request.references)
+  $review.set("similarWorks", $request.similar_works)
+  $review.set("manuscript", $request.manuscript)
+  $review.set("formulas", $request.formulas)
+  $review.set("figures", $request.figures)
+  $review.set("relevancy", $request.relevancy)
+  $review.set("finalOpinion", $request.final_op)
+  $review.set("comments", $request.comments)
+
+  $newDoc.save()
+
+#end
+
+
+{{/velocity}}
