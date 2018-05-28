@@ -8,12 +8,13 @@
   #set($speakers = $doc.getObject('XWiki.ConferenceManagementClass').getProperty('speakers').value)
   #foreach($v in $speakers.split(','))
     #if($v == $xcontext.getUser()) 
-      {{html}}You are assigned as a speaker to this conference click here if you want to upload your resources.{{/html}}
+      #set($title = $doc.getObject('XWiki.ConferenceClass').getProperty('title').value)
+      {{html}}You are assigned as a speaker to this conference click <a href="/xwiki/bin/view/Add%20New%20Upload?docName=$title/">here</a> if you want to upload your resources.{{/html}}
     #end
   #end
 
   #if($xwiki.getUser().isUserInGroup('XWiki.XWikiReviewers'))
-     {{html}}You are assigned as a reviewer to this conference click <a href="/xwiki/bin/view/Add%20New%20Upload/">here</a> if you want to see resources for reviewing.{{/html}}
+     {{html}}You are assigned as a reviewer to this conference click here if you want to see resources for reviewing.{{/html}}
   #end
   #set ($author = $doc.author)
   #if($author == $xcontext.getUser())
