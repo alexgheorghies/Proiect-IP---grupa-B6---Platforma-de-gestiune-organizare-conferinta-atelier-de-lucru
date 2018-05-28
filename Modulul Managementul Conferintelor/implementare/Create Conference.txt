@@ -1,5 +1,7 @@
 {{velocity}}
-
+#if(!$xwiki.getUser().isUserInGroup('XWiki.XWikiAdminGroup') and !$xwiki.getUser().isUserInGroup('XWiki.Organizers'))
+	{{warning}}You are not able to create an conference please contact an admin!{{/warning}}
+#else
 {{html}}
 
   <form enctype="multipart/form-data" method="post">
@@ -33,22 +35,20 @@
     <input type="submit" value="Add conference" title="Submit info" />
 {{/html}}
 
-#if("$!request.title" != '')
-  #set($docPath = "Conferences.${request.title}")
-  #set($newDoc = $xwiki.getDocument("$docPath"))
-  #set($conf= $newDoc.newObject('XWiki.ConferenceClass'))
-  #if($xwiki.getUser().isUserInGroup('XWiki.XWikiAdminGroup')) || $xwiki.getUser().isUserInGroup('XWiki.Organizers')))
+  #if("$!request.title" != '')
+    #set($docPath = "Conferences.${request.title}")
+    #set($newDoc = $xwiki.getDocument("$docPath"))
+    #set($conf= $newDoc.newObject('XWiki.ConferenceClass'))
+  
 
-    $conf.set("title", $request.title)
-    $conf.set("description", $request.description)
-    $conf.set("location", $request.location)
-    $conf.set("when", $request.date)
-    $conf.set("seatsAvailable", $request.seats)
+      $conf.set("title", $request.title)
+      $conf.set("description", $request.description)
+      $conf.set("location", $request.location)
+      $conf.set("when", $request.date)
+      $conf.set("seatsAvailable", $request.seats)
 
-    $newDoc.save()
-    $response.sendRedirect($newDoc.getURL('view'))
-  #else
-    {{warning}}You are not able to create an conference please contact an admin!{{/warning}}
+      $newDoc.save()
+      $response.sendRedirect($newDoc.getURL('view'))
   #end
 #end
 {{/velocity}}
