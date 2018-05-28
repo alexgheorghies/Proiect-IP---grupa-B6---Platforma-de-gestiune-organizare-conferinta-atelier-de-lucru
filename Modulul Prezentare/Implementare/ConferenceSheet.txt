@@ -1,7 +1,7 @@
 {{velocity}}
 $xwiki.get('jsfx').use('uicomponents/widgets/validation/livevalidation_prototype.js')
 $xwiki.get('ssfx').use('uicomponents/widgets/validation/livevalidation.css')
-
+#set($url=$doc.getURL())
 #set ($discard = $xwiki.ssx.use('Conference.StyleSheet.WebHome'))
 #if($context.action != 'view')
 #set($class = $doc.getObject('Conference.ConferenceClass').xWikiClass)
@@ -13,6 +13,8 @@ $xwiki.get('ssfx').use('uicomponents/widgets/validation/livevalidation.css')
 #elseif($context.action == 'view')
 #set($title = $doc.getObject('Conference.ConferenceClass').getProperty('title').value)
 #set($color = $doc.getObject('Conference.ConferenceClass').getProperty('color').value)
+#set($latitude = $doc.getObject('Conference.ConferenceClass').getProperty('latitude').value)
+#set($longitude = $doc.getObject('Conference.ConferenceClass').getProperty('longitude').value)
 #if($color == 'red')
 #set($color = '#ED2939')
 #elseif($color == 'lilac')
@@ -167,7 +169,7 @@ $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
 
 </style>
 
-
+<!--<p id="afisat">$url</p>-->
     <!--<section class="welcome_message">
         <h1 id="main_title">
             <div class="title_box">Welcome to $title Conference!</div>
@@ -176,23 +178,23 @@ $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
     </section>-->
 <div class="slideshow_Container welcome_message">
             
-            <img class="slide first" src="https://images.unsplash.com/photo-1509890078470-aa80385aee41?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ff67e8117e302b0884b183c5bbb07561&auto=format&fit=crop&w=1953&q=80">
+            <img id="img1" class="slide first" src="https://images.unsplash.com/photo-1509890078470-aa80385aee41?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ff67e8117e302b0884b183c5bbb07561&auto=format&fit=crop&w=1953&q=80">
               <!--  <img src="../images/Slider1.jpeg" style="width:100%">-->
             
 
-            <img class="slide" src="https://images.unsplash.com/photo-1508862842963-67ae79d4eded?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=956a3c2360de2bd2855383daef03e8d4&auto=format&fit=crop&w=634&q=80">
+            <img id="img2" class="slide" src="https://images.unsplash.com/photo-1508862842963-67ae79d4eded?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=956a3c2360de2bd2855383daef03e8d4&auto=format&fit=crop&w=634&q=80">
               <!--  <img src="../images/Slider2.jpeg" style="width:100%">-->
             
 
-            <img class="slide" src="https://images.unsplash.com/photo-1509408895711-7eda6e83c637?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1844cab997dc2e5f1ce14e3b9cbd0bc1&auto=format&fit=crop&w=1050&q=80">
+            <img id="img3" class="slide" src="https://images.unsplash.com/photo-1509408895711-7eda6e83c637?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1844cab997dc2e5f1ce14e3b9cbd0bc1&auto=format&fit=crop&w=1050&q=80">
               <!--  <img src="../images/Slider3.jpeg" style="width:100%">-->
             
 
-            <img class="slide" src="https://images.unsplash.com/photo-1491900177661-4e1cd2d7cce2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0e5f7a670b5cd3ff8bbc7b21ef4e4461&auto=format&fit=crop&w=1050&q=80">
+            <img id="img4" class="slide" src="https://images.unsplash.com/photo-1491900177661-4e1cd2d7cce2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0e5f7a670b5cd3ff8bbc7b21ef4e4461&auto=format&fit=crop&w=1050&q=80">
               <!--  <img src="../images/Slider4.jpeg" style="width:100%">-->
             
 
-            <img class="slide" style="background-image:url(https://images.unsplash.com/photo-1507010228826-fd02d8c83ddf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=60c658450948b1b568b15cb0f4bacb32&auto=format&fit=crop&w=1041&q=80">
+            <img id="img5" class="slide" style="background-image:url(https://images.unsplash.com/photo-1507010228826-fd02d8c83ddf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=60c658450948b1b568b15cb0f4bacb32&auto=format&fit=crop&w=1041&q=80">
               <!--  <img src="../images/Slider5.jpg" style="width:100%"> -->
             
 
@@ -262,7 +264,16 @@ $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
 <div id="b2" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.15)">
   <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
   <h2>Description</h2>
-  <p class="presentation">$descriptionText</p>
+  <p class="presentation">$descriptionText
+  <br>
+  <p class="presentation">Harta interactiva:</p>
+  
+</p>
+   
+   <div id="map" class="presentation" style="width:50%;height:300px"></div>
+   
+  <!--<p>Harta interactiva:</p>
+  <div class="map_Container" id="map></div>-->
 </div>
 
 <div id="b3" class="containerTab" style="display:none;background:rgba(0, 0, 0, 0.20)">
@@ -291,6 +302,26 @@ $xwiki.jsfx.use('uicomponents/widgets/upload.js', true)
     
 
 <script type="text/javascript">
+      var url=window.location.href;
+      var download_url=url.replace("view","download")+"/";
+      var url1=download_url+"background1.jpg";
+      var url2=download_url+"background2.jpg";
+      var url3=download_url+"background3.jpg";
+      var url4=download_url+"background4.jpg";
+      var url5=download_url+"background5.jpg";
+      var image1=document.getElementById("img1");
+      var image2=document.getElementById("img2");
+      var image3=document.getElementById("img3");
+      var image4=document.getElementById("img4");
+      var image5=document.getElementById("img5");
+      image1.src=url1;
+      image2.src=url2;
+      image3.src=url3;
+      image4.src=url4;
+      image5.src=url5;
+      
+      
+            
       var slideIndex = 5
 var timeoutHandle;
 //showSlides(slideIndex);
@@ -406,6 +437,20 @@ slideIndex++;
     }
 
 </script>
+<script>
+function contactMap()
+{
+  var mapCenter=new google.maps.LatLng(Number("$latitude"),Number("$longitude"));
+  var options={
+    center:mapCenter,
+    zoom:18,
+  };
+  var map=new google.maps.Map(document.getElementById("map"),options);
+  var marker = new google.maps.Marker({position:mapCenter});
+  marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH7weUXxtqb9S6W-5IQsFsuN-LQxaaDDc&callback=contactMap"></script>
 {{/html}}
 #end
 {{/velocity}}

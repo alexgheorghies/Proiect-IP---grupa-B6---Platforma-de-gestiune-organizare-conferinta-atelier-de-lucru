@@ -16,7 +16,7 @@
     padding-top: 100px;
     padding-bottom: 50px;
     text-align: center;
-    border-bottom: 1px solid black;
+    /*border-bottom: 1px solid black;*/
 }
 
 .title_box {
@@ -175,4 +175,8 @@ body{
 }
 .slideshow_Container img{
   width:100%;
+}
+#map{
+  height:300 px !important;
+  width :50%;
 }
