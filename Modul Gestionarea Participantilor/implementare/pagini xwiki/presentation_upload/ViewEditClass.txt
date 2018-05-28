@@ -89,6 +89,7 @@
 
 {{velocity}}
 
+#if ($context.action == 'view')
 #livetable("sad" $columns $columnsProperties $options)
 
 {{html}}
@@ -99,6 +100,9 @@
 
 {{/html}}
 
+#end
+
+
 #if("$!request.submit" != '')
   #set($red = '/xwiki/bin/view/Add%20Review?docName=' + $urlEncoded)
   $response.sendRedirect($red)
@@ -106,6 +110,7 @@
 #end
 
 #if($context.action == 'edit')
+
 
 #set($authorList = $doc.getObject('XWiki.PresentationUploadClass').getProperty('authors').value)
 #set($title = $doc.getObject('XWiki.PresentationUploadClass').getProperty('title').value)
