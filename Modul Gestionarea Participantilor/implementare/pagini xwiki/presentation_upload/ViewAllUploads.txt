@@ -1,10 +1,10 @@
-{{velocity output="false"}}
+{{velocity output = "false"}}
 
 
-#set($columns = ["title", "description", "doc.creationDate","doc.creator","_attachments"])
+#set($columns = ["title", "conferencePath", "doc.creationDate","doc.creator","_attachments"])
 #set($columnsProperties = {
    "title" : { "type" : "text" , "size" : 20, "link" : "view"},
-   "description" : { "type" : "text", "link" : "view"}
+   "conferencePath" : { "type" : "text", "link" : "view"}
 })
 #set($options = {
 
@@ -13,9 +13,11 @@
   "rowCount": 10
 })
 
+#if(!$isAdmin)
  $columns.add('_actions'))
- $columnsProperties.put('_actions', { 'actions' : ['delete','edit' ] }))
+ $columnsProperties.put('_actions', { 'actions' : ['delete','edit','rights', $newTest ] }))
 
+#end
 {{/velocity}}
 
 
